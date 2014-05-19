@@ -7,148 +7,150 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C6BDFF1192932DC00332918 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BDFF0192932DC00332918 /* Foundation.framework */; };
-		7C6BDFF3192932DC00332918 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BDFF2192932DC00332918 /* CoreGraphics.framework */; };
-		7C6BDFF5192932DC00332918 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BDFF4192932DC00332918 /* UIKit.framework */; };
-		7C6BDFF7192932DC00332918 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BDFF6192932DC00332918 /* CoreData.framework */; };
-		7C6BDFFD192932DC00332918 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C6BDFFB192932DC00332918 /* InfoPlist.strings */; };
-		7C6BDFFF192932DC00332918 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BDFFE192932DC00332918 /* main.m */; };
-		7C6BE003192932DC00332918 /* SAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BE002192932DC00332918 /* SAppDelegate.m */; };
-		7C6BE006192932DC00332918 /* Subsurface.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BE004192932DC00332918 /* Subsurface.xcdatamodeld */; };
-		7C6BE008192932DC00332918 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6BE007192932DC00332918 /* Images.xcassets */; };
-		7C6BE00F192932DC00332918 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BE00E192932DC00332918 /* XCTest.framework */; };
-		7C6BE010192932DC00332918 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BDFF0192932DC00332918 /* Foundation.framework */; };
-		7C6BE011192932DC00332918 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BDFF4192932DC00332918 /* UIKit.framework */; };
-		7C6BE012192932DC00332918 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6BDFF6192932DC00332918 /* CoreData.framework */; };
-		7C6BE01A192932DC00332918 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C6BE018192932DC00332918 /* InfoPlist.strings */; };
-		7C6BE01C192932DC00332918 /* SubsurfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BE01B192932DC00332918 /* SubsurfaceTests.m */; };
+		7C08905E192A9A36007307FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C08905D192A9A36007307FB /* Foundation.framework */; };
+		7C089060192A9A36007307FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C08905F192A9A36007307FB /* CoreGraphics.framework */; };
+		7C089062192A9A36007307FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C089061192A9A36007307FB /* UIKit.framework */; };
+		7C089068192A9A36007307FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C089066192A9A36007307FB /* InfoPlist.strings */; };
+		7C08906A192A9A36007307FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C089069192A9A36007307FB /* main.m */; };
+		7C08906E192A9A36007307FB /* SAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C08906D192A9A36007307FB /* SAppDelegate.m */; };
+		7C089071192A9A36007307FB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C08906F192A9A36007307FB /* Main_iPhone.storyboard */; };
+		7C089074192A9A36007307FB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C089072192A9A36007307FB /* Main_iPad.storyboard */; };
+		7C089077192A9A36007307FB /* SViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C089076192A9A36007307FB /* SViewController.m */; };
+		7C089079192A9A36007307FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C089078192A9A36007307FB /* Images.xcassets */; };
+		7C089080192A9A36007307FB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C08907F192A9A36007307FB /* XCTest.framework */; };
+		7C089081192A9A36007307FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C08905D192A9A36007307FB /* Foundation.framework */; };
+		7C089082192A9A36007307FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C089061192A9A36007307FB /* UIKit.framework */; };
+		7C08908A192A9A36007307FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C089088192A9A36007307FB /* InfoPlist.strings */; };
+		7C08908C192A9A36007307FB /* SubsurfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C08908B192A9A36007307FB /* SubsurfaceTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7C6BE013192932DC00332918 /* PBXContainerItemProxy */ = {
+		7C089083192A9A36007307FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7C6BDFE5192932DC00332918 /* Project object */;
+			containerPortal = 7C089052192A9A36007307FB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7C6BDFEC192932DC00332918;
+			remoteGlobalIDString = 7C089059192A9A36007307FB;
 			remoteInfo = Subsurface;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C6BDFED192932DC00332918 /* Subsurface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subsurface.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C6BDFF0192932DC00332918 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		7C6BDFF2192932DC00332918 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		7C6BDFF4192932DC00332918 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		7C6BDFF6192932DC00332918 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		7C6BDFFA192932DC00332918 /* Subsurface-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Subsurface-Info.plist"; sourceTree = "<group>"; };
-		7C6BDFFC192932DC00332918 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7C6BDFFE192932DC00332918 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7C6BE000192932DC00332918 /* Subsurface-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Subsurface-Prefix.pch"; sourceTree = "<group>"; };
-		7C6BE001192932DC00332918 /* SAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAppDelegate.h; sourceTree = "<group>"; };
-		7C6BE002192932DC00332918 /* SAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAppDelegate.m; sourceTree = "<group>"; };
-		7C6BE005192932DC00332918 /* Subsurface.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Subsurface.xcdatamodel; sourceTree = "<group>"; };
-		7C6BE007192932DC00332918 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7C6BE00D192932DC00332918 /* SubsurfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubsurfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C6BE00E192932DC00332918 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		7C6BE017192932DC00332918 /* SubsurfaceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SubsurfaceTests-Info.plist"; sourceTree = "<group>"; };
-		7C6BE019192932DC00332918 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7C6BE01B192932DC00332918 /* SubsurfaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubsurfaceTests.m; sourceTree = "<group>"; };
+		7C08905A192A9A36007307FB /* Subsurface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subsurface.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C08905D192A9A36007307FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7C08905F192A9A36007307FB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7C089061192A9A36007307FB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7C089065192A9A36007307FB /* Subsurface-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Subsurface-Info.plist"; sourceTree = "<group>"; };
+		7C089067192A9A36007307FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7C089069192A9A36007307FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7C08906B192A9A36007307FB /* Subsurface-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Subsurface-Prefix.pch"; sourceTree = "<group>"; };
+		7C08906C192A9A36007307FB /* SAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAppDelegate.h; sourceTree = "<group>"; };
+		7C08906D192A9A36007307FB /* SAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAppDelegate.m; sourceTree = "<group>"; };
+		7C089070192A9A36007307FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		7C089073192A9A36007307FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		7C089075192A9A36007307FB /* SViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SViewController.h; sourceTree = "<group>"; };
+		7C089076192A9A36007307FB /* SViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SViewController.m; sourceTree = "<group>"; };
+		7C089078192A9A36007307FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7C08907E192A9A36007307FB /* SubsurfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubsurfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C08907F192A9A36007307FB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7C089087192A9A36007307FB /* SubsurfaceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SubsurfaceTests-Info.plist"; sourceTree = "<group>"; };
+		7C089089192A9A36007307FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7C08908B192A9A36007307FB /* SubsurfaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubsurfaceTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7C6BDFEA192932DC00332918 /* Frameworks */ = {
+		7C089057192A9A36007307FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C6BDFF3192932DC00332918 /* CoreGraphics.framework in Frameworks */,
-				7C6BDFF7192932DC00332918 /* CoreData.framework in Frameworks */,
-				7C6BDFF5192932DC00332918 /* UIKit.framework in Frameworks */,
-				7C6BDFF1192932DC00332918 /* Foundation.framework in Frameworks */,
+				7C089060192A9A36007307FB /* CoreGraphics.framework in Frameworks */,
+				7C089062192A9A36007307FB /* UIKit.framework in Frameworks */,
+				7C08905E192A9A36007307FB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C6BE00A192932DC00332918 /* Frameworks */ = {
+		7C08907B192A9A36007307FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C6BE00F192932DC00332918 /* XCTest.framework in Frameworks */,
-				7C6BE012192932DC00332918 /* CoreData.framework in Frameworks */,
-				7C6BE011192932DC00332918 /* UIKit.framework in Frameworks */,
-				7C6BE010192932DC00332918 /* Foundation.framework in Frameworks */,
+				7C089080192A9A36007307FB /* XCTest.framework in Frameworks */,
+				7C089082192A9A36007307FB /* UIKit.framework in Frameworks */,
+				7C089081192A9A36007307FB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C6BDFE4192932DC00332918 = {
+		7C089051192A9A36007307FB = {
 			isa = PBXGroup;
 			children = (
-				7C6BDFF8192932DC00332918 /* Subsurface */,
-				7C6BE015192932DC00332918 /* SubsurfaceTests */,
-				7C6BDFEF192932DC00332918 /* Frameworks */,
-				7C6BDFEE192932DC00332918 /* Products */,
+				7C089063192A9A36007307FB /* Subsurface */,
+				7C089085192A9A36007307FB /* SubsurfaceTests */,
+				7C08905C192A9A36007307FB /* Frameworks */,
+				7C08905B192A9A36007307FB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7C6BDFEE192932DC00332918 /* Products */ = {
+		7C08905B192A9A36007307FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C6BDFED192932DC00332918 /* Subsurface.app */,
-				7C6BE00D192932DC00332918 /* SubsurfaceTests.xctest */,
+				7C08905A192A9A36007307FB /* Subsurface.app */,
+				7C08907E192A9A36007307FB /* SubsurfaceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7C6BDFEF192932DC00332918 /* Frameworks */ = {
+		7C08905C192A9A36007307FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7C6BDFF0192932DC00332918 /* Foundation.framework */,
-				7C6BDFF2192932DC00332918 /* CoreGraphics.framework */,
-				7C6BDFF4192932DC00332918 /* UIKit.framework */,
-				7C6BDFF6192932DC00332918 /* CoreData.framework */,
-				7C6BE00E192932DC00332918 /* XCTest.framework */,
+				7C08905D192A9A36007307FB /* Foundation.framework */,
+				7C08905F192A9A36007307FB /* CoreGraphics.framework */,
+				7C089061192A9A36007307FB /* UIKit.framework */,
+				7C08907F192A9A36007307FB /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7C6BDFF8192932DC00332918 /* Subsurface */ = {
+		7C089063192A9A36007307FB /* Subsurface */ = {
 			isa = PBXGroup;
 			children = (
-				7C6BE001192932DC00332918 /* SAppDelegate.h */,
-				7C6BE002192932DC00332918 /* SAppDelegate.m */,
-				7C6BE007192932DC00332918 /* Images.xcassets */,
-				7C6BE004192932DC00332918 /* Subsurface.xcdatamodeld */,
-				7C6BDFF9192932DC00332918 /* Supporting Files */,
+				7C08906C192A9A36007307FB /* SAppDelegate.h */,
+				7C08906D192A9A36007307FB /* SAppDelegate.m */,
+				7C08906F192A9A36007307FB /* Main_iPhone.storyboard */,
+				7C089072192A9A36007307FB /* Main_iPad.storyboard */,
+				7C089075192A9A36007307FB /* SViewController.h */,
+				7C089076192A9A36007307FB /* SViewController.m */,
+				7C089078192A9A36007307FB /* Images.xcassets */,
+				7C089064192A9A36007307FB /* Supporting Files */,
 			);
 			path = Subsurface;
 			sourceTree = "<group>";
 		};
-		7C6BDFF9192932DC00332918 /* Supporting Files */ = {
+		7C089064192A9A36007307FB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C6BDFFA192932DC00332918 /* Subsurface-Info.plist */,
-				7C6BDFFB192932DC00332918 /* InfoPlist.strings */,
-				7C6BDFFE192932DC00332918 /* main.m */,
-				7C6BE000192932DC00332918 /* Subsurface-Prefix.pch */,
+				7C089065192A9A36007307FB /* Subsurface-Info.plist */,
+				7C089066192A9A36007307FB /* InfoPlist.strings */,
+				7C089069192A9A36007307FB /* main.m */,
+				7C08906B192A9A36007307FB /* Subsurface-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7C6BE015192932DC00332918 /* SubsurfaceTests */ = {
+		7C089085192A9A36007307FB /* SubsurfaceTests */ = {
 			isa = PBXGroup;
 			children = (
-				7C6BE01B192932DC00332918 /* SubsurfaceTests.m */,
-				7C6BE016192932DC00332918 /* Supporting Files */,
+				7C08908B192A9A36007307FB /* SubsurfaceTests.m */,
+				7C089086192A9A36007307FB /* Supporting Files */,
 			);
 			path = SubsurfaceTests;
 			sourceTree = "<group>";
 		};
-		7C6BE016192932DC00332918 /* Supporting Files */ = {
+		7C089086192A9A36007307FB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C6BE017192932DC00332918 /* SubsurfaceTests-Info.plist */,
-				7C6BE018192932DC00332918 /* InfoPlist.strings */,
+				7C089087192A9A36007307FB /* SubsurfaceTests-Info.plist */,
+				7C089088192A9A36007307FB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,13 +158,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C6BDFEC192932DC00332918 /* Subsurface */ = {
+		7C089059192A9A36007307FB /* Subsurface */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C6BE01F192932DC00332918 /* Build configuration list for PBXNativeTarget "Subsurface" */;
+			buildConfigurationList = 7C08908F192A9A36007307FB /* Build configuration list for PBXNativeTarget "Subsurface" */;
 			buildPhases = (
-				7C6BDFE9192932DC00332918 /* Sources */,
-				7C6BDFEA192932DC00332918 /* Frameworks */,
-				7C6BDFEB192932DC00332918 /* Resources */,
+				7C089056192A9A36007307FB /* Sources */,
+				7C089057192A9A36007307FB /* Frameworks */,
+				7C089058192A9A36007307FB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -170,122 +172,141 @@
 			);
 			name = Subsurface;
 			productName = Subsurface;
-			productReference = 7C6BDFED192932DC00332918 /* Subsurface.app */;
+			productReference = 7C08905A192A9A36007307FB /* Subsurface.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7C6BE00C192932DC00332918 /* SubsurfaceTests */ = {
+		7C08907D192A9A36007307FB /* SubsurfaceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C6BE022192932DC00332918 /* Build configuration list for PBXNativeTarget "SubsurfaceTests" */;
+			buildConfigurationList = 7C089092192A9A36007307FB /* Build configuration list for PBXNativeTarget "SubsurfaceTests" */;
 			buildPhases = (
-				7C6BE009192932DC00332918 /* Sources */,
-				7C6BE00A192932DC00332918 /* Frameworks */,
-				7C6BE00B192932DC00332918 /* Resources */,
+				7C08907A192A9A36007307FB /* Sources */,
+				7C08907B192A9A36007307FB /* Frameworks */,
+				7C08907C192A9A36007307FB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7C6BE014192932DC00332918 /* PBXTargetDependency */,
+				7C089084192A9A36007307FB /* PBXTargetDependency */,
 			);
 			name = SubsurfaceTests;
 			productName = SubsurfaceTests;
-			productReference = 7C6BE00D192932DC00332918 /* SubsurfaceTests.xctest */;
+			productReference = 7C08907E192A9A36007307FB /* SubsurfaceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7C6BDFE5192932DC00332918 /* Project object */ = {
+		7C089052192A9A36007307FB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = S;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Subsurface;
 				TargetAttributes = {
-					7C6BE00C192932DC00332918 = {
-						TestTargetID = 7C6BDFEC192932DC00332918;
+					7C08907D192A9A36007307FB = {
+						TestTargetID = 7C089059192A9A36007307FB;
 					};
 				};
 			};
-			buildConfigurationList = 7C6BDFE8192932DC00332918 /* Build configuration list for PBXProject "Subsurface" */;
+			buildConfigurationList = 7C089055192A9A36007307FB /* Build configuration list for PBXProject "Subsurface" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 7C6BDFE4192932DC00332918;
-			productRefGroup = 7C6BDFEE192932DC00332918 /* Products */;
+			mainGroup = 7C089051192A9A36007307FB;
+			productRefGroup = 7C08905B192A9A36007307FB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C6BDFEC192932DC00332918 /* Subsurface */,
-				7C6BE00C192932DC00332918 /* SubsurfaceTests */,
+				7C089059192A9A36007307FB /* Subsurface */,
+				7C08907D192A9A36007307FB /* SubsurfaceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7C6BDFEB192932DC00332918 /* Resources */ = {
+		7C089058192A9A36007307FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C6BDFFD192932DC00332918 /* InfoPlist.strings in Resources */,
-				7C6BE008192932DC00332918 /* Images.xcassets in Resources */,
+				7C089074192A9A36007307FB /* Main_iPad.storyboard in Resources */,
+				7C089079192A9A36007307FB /* Images.xcassets in Resources */,
+				7C089071192A9A36007307FB /* Main_iPhone.storyboard in Resources */,
+				7C089068192A9A36007307FB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C6BE00B192932DC00332918 /* Resources */ = {
+		7C08907C192A9A36007307FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C6BE01A192932DC00332918 /* InfoPlist.strings in Resources */,
+				7C08908A192A9A36007307FB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7C6BDFE9192932DC00332918 /* Sources */ = {
+		7C089056192A9A36007307FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C6BE006192932DC00332918 /* Subsurface.xcdatamodeld in Sources */,
-				7C6BE003192932DC00332918 /* SAppDelegate.m in Sources */,
-				7C6BDFFF192932DC00332918 /* main.m in Sources */,
+				7C08906E192A9A36007307FB /* SAppDelegate.m in Sources */,
+				7C089077192A9A36007307FB /* SViewController.m in Sources */,
+				7C08906A192A9A36007307FB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C6BE009192932DC00332918 /* Sources */ = {
+		7C08907A192A9A36007307FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C6BE01C192932DC00332918 /* SubsurfaceTests.m in Sources */,
+				7C08908C192A9A36007307FB /* SubsurfaceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7C6BE014192932DC00332918 /* PBXTargetDependency */ = {
+		7C089084192A9A36007307FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7C6BDFEC192932DC00332918 /* Subsurface */;
-			targetProxy = 7C6BE013192932DC00332918 /* PBXContainerItemProxy */;
+			target = 7C089059192A9A36007307FB /* Subsurface */;
+			targetProxy = 7C089083192A9A36007307FB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7C6BDFFB192932DC00332918 /* InfoPlist.strings */ = {
+		7C089066192A9A36007307FB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7C6BDFFC192932DC00332918 /* en */,
+				7C089067192A9A36007307FB /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		7C6BE018192932DC00332918 /* InfoPlist.strings */ = {
+		7C08906F192A9A36007307FB /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7C6BE019192932DC00332918 /* en */,
+				7C089070192A9A36007307FB /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		7C089072192A9A36007307FB /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C089073192A9A36007307FB /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		7C089088192A9A36007307FB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C089089192A9A36007307FB /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -293,7 +314,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7C6BE01D192932DC00332918 /* Debug */ = {
+		7C08908D192A9A36007307FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -332,7 +353,7 @@
 			};
 			name = Debug;
 		};
-		7C6BE01E192932DC00332918 /* Release */ = {
+		7C08908E192A9A36007307FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -365,7 +386,7 @@
 			};
 			name = Release;
 		};
-		7C6BE020192932DC00332918 /* Debug */ = {
+		7C089090192A9A36007307FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -378,7 +399,7 @@
 			};
 			name = Debug;
 		};
-		7C6BE021192932DC00332918 /* Release */ = {
+		7C089091192A9A36007307FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -391,7 +412,7 @@
 			};
 			name = Release;
 		};
-		7C6BE023192932DC00332918 /* Debug */ = {
+		7C089093192A9A36007307FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Subsurface.app/Subsurface";
@@ -413,7 +434,7 @@
 			};
 			name = Debug;
 		};
-		7C6BE024192932DC00332918 /* Release */ = {
+		7C089094192A9A36007307FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Subsurface.app/Subsurface";
@@ -434,45 +455,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7C6BDFE8192932DC00332918 /* Build configuration list for PBXProject "Subsurface" */ = {
+		7C089055192A9A36007307FB /* Build configuration list for PBXProject "Subsurface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C6BE01D192932DC00332918 /* Debug */,
-				7C6BE01E192932DC00332918 /* Release */,
+				7C08908D192A9A36007307FB /* Debug */,
+				7C08908E192A9A36007307FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C6BE01F192932DC00332918 /* Build configuration list for PBXNativeTarget "Subsurface" */ = {
+		7C08908F192A9A36007307FB /* Build configuration list for PBXNativeTarget "Subsurface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C6BE020192932DC00332918 /* Debug */,
-				7C6BE021192932DC00332918 /* Release */,
+				7C089090192A9A36007307FB /* Debug */,
+				7C089091192A9A36007307FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		7C6BE022192932DC00332918 /* Build configuration list for PBXNativeTarget "SubsurfaceTests" */ = {
+		7C089092192A9A36007307FB /* Build configuration list for PBXNativeTarget "SubsurfaceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C6BE023192932DC00332918 /* Debug */,
-				7C6BE024192932DC00332918 /* Release */,
+				7C089093192A9A36007307FB /* Debug */,
+				7C089094192A9A36007307FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		7C6BE004192932DC00332918 /* Subsurface.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7C6BE005192932DC00332918 /* Subsurface.xcdatamodel */,
-			);
-			currentVersion = 7C6BE005192932DC00332918 /* Subsurface.xcdatamodel */;
-			path = Subsurface.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = 7C6BDFE5192932DC00332918 /* Project object */;
+	rootObject = 7C089052192A9A36007307FB /* Project object */;
 }

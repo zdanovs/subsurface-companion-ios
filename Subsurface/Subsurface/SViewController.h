@@ -1,5 +1,5 @@
 //
-//  SAppDelegate.h
+//  SViewController.h
 //  Subsurface
 //
 //  Created by Andrey Zhdanov on 19/05/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface SViewController : UIViewController
 
 @end

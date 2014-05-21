@@ -13,15 +13,15 @@
 		7C089068192A9A36007307FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C089066192A9A36007307FB /* InfoPlist.strings */; };
 		7C08906A192A9A36007307FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C089069192A9A36007307FB /* main.m */; };
 		7C08906E192A9A36007307FB /* SAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C08906D192A9A36007307FB /* SAppDelegate.m */; };
-		7C089071192A9A36007307FB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C08906F192A9A36007307FB /* Main_iPhone.storyboard */; };
-		7C089074192A9A36007307FB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C089072192A9A36007307FB /* Main_iPad.storyboard */; };
-		7C089077192A9A36007307FB /* SViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C089076192A9A36007307FB /* SViewController.m */; };
+		7C089077192A9A36007307FB /* SWelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C089076192A9A36007307FB /* SWelcomeVC.m */; };
 		7C089079192A9A36007307FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C089078192A9A36007307FB /* Images.xcassets */; };
 		7C089080192A9A36007307FB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C08907F192A9A36007307FB /* XCTest.framework */; };
 		7C089081192A9A36007307FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C08905D192A9A36007307FB /* Foundation.framework */; };
 		7C089082192A9A36007307FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C089061192A9A36007307FB /* UIKit.framework */; };
 		7C08908A192A9A36007307FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C089088192A9A36007307FB /* InfoPlist.strings */; };
 		7C08908C192A9A36007307FB /* SubsurfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C08908B192A9A36007307FB /* SubsurfaceTests.m */; };
+		7CD22853192D3E6D004D3A21 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C08906F192A9A36007307FB /* Main_iPhone.storyboard */; };
+		7CD22854192D3E6D004D3A21 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C089072192A9A36007307FB /* Main_iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,22 +39,24 @@
 		7C08905D192A9A36007307FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C08905F192A9A36007307FB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7C089061192A9A36007307FB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		7C089065192A9A36007307FB /* Subsurface-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Subsurface-Info.plist"; sourceTree = "<group>"; };
 		7C089067192A9A36007307FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7C089069192A9A36007307FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7C08906B192A9A36007307FB /* Subsurface-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Subsurface-Prefix.pch"; sourceTree = "<group>"; };
 		7C08906C192A9A36007307FB /* SAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAppDelegate.h; sourceTree = "<group>"; };
 		7C08906D192A9A36007307FB /* SAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAppDelegate.m; sourceTree = "<group>"; };
 		7C089070192A9A36007307FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7C089073192A9A36007307FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		7C089075192A9A36007307FB /* SViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SViewController.h; sourceTree = "<group>"; };
-		7C089076192A9A36007307FB /* SViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SViewController.m; sourceTree = "<group>"; };
-		7C089078192A9A36007307FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7C089075192A9A36007307FB /* SWelcomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWelcomeVC.h; sourceTree = "<group>"; };
+		7C089076192A9A36007307FB /* SWelcomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWelcomeVC.m; sourceTree = "<group>"; };
+		7C089078192A9A36007307FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Supporting Files/Images.xcassets"; sourceTree = "<group>"; };
 		7C08907E192A9A36007307FB /* SubsurfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubsurfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C08907F192A9A36007307FB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7C089087192A9A36007307FB /* SubsurfaceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SubsurfaceTests-Info.plist"; sourceTree = "<group>"; };
 		7C089089192A9A36007307FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7C08908B192A9A36007307FB /* SubsurfaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubsurfaceTests.m; sourceTree = "<group>"; };
+		7C8FE7C5192D253B00C5B1D6 /* Subsurface-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Subsurface-Info.plist"; path = "Supporting Files/Subsurface-Info.plist"; sourceTree = "<group>"; };
+		7C8FE7C6192D253B00C5B1D6 /* Subsurface-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Subsurface-Prefix.pch"; path = "Supporting Files/Subsurface-Prefix.pch"; sourceTree = "<group>"; };
+		7CD22856192D3EA0004D3A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		7CD22858192D3EA3004D3A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +118,7 @@
 			children = (
 				7C08906C192A9A36007307FB /* SAppDelegate.h */,
 				7C08906D192A9A36007307FB /* SAppDelegate.m */,
-				7C08906F192A9A36007307FB /* Main_iPhone.storyboard */,
-				7C089072192A9A36007307FB /* Main_iPad.storyboard */,
-				7C089075192A9A36007307FB /* SViewController.h */,
-				7C089076192A9A36007307FB /* SViewController.m */,
-				7C089078192A9A36007307FB /* Images.xcassets */,
+				7C8FE7C4192D24F000C5B1D6 /* View Controllers */,
 				7C089064192A9A36007307FB /* Supporting Files */,
 			);
 			path = Subsurface;
@@ -129,10 +127,13 @@
 		7C089064192A9A36007307FB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C089065192A9A36007307FB /* Subsurface-Info.plist */,
+				7C089078192A9A36007307FB /* Images.xcassets */,
+				7C08906F192A9A36007307FB /* Main_iPhone.storyboard */,
+				7C089072192A9A36007307FB /* Main_iPad.storyboard */,
+				7C8FE7C5192D253B00C5B1D6 /* Subsurface-Info.plist */,
+				7C8FE7C6192D253B00C5B1D6 /* Subsurface-Prefix.pch */,
 				7C089066192A9A36007307FB /* InfoPlist.strings */,
 				7C089069192A9A36007307FB /* main.m */,
-				7C08906B192A9A36007307FB /* Subsurface-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -153,6 +154,15 @@
 				7C089088192A9A36007307FB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7C8FE7C4192D24F000C5B1D6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C089075192A9A36007307FB /* SWelcomeVC.h */,
+				7C089076192A9A36007307FB /* SWelcomeVC.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +242,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C089074192A9A36007307FB /* Main_iPad.storyboard in Resources */,
+				7CD22853192D3E6D004D3A21 /* Main_iPhone.storyboard in Resources */,
+				7CD22854192D3E6D004D3A21 /* Main_iPad.storyboard in Resources */,
 				7C089079192A9A36007307FB /* Images.xcassets in Resources */,
-				7C089071192A9A36007307FB /* Main_iPhone.storyboard in Resources */,
 				7C089068192A9A36007307FB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C08906E192A9A36007307FB /* SAppDelegate.m in Sources */,
-				7C089077192A9A36007307FB /* SViewController.m in Sources */,
+				7C089077192A9A36007307FB /* SWelcomeVC.m in Sources */,
 				7C08906A192A9A36007307FB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,22 +295,27 @@
 				7C089067192A9A36007307FB /* en */,
 			);
 			name = InfoPlist.strings;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7C08906F192A9A36007307FB /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7C089070192A9A36007307FB /* Base */,
+				7CD22856192D3EA0004D3A21 /* en */,
 			);
 			name = Main_iPhone.storyboard;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7C089072192A9A36007307FB /* Main_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7C089073192A9A36007307FB /* Base */,
+				7CD22858192D3EA3004D3A21 /* en */,
 			);
 			name = Main_iPad.storyboard;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7C089088192A9A36007307FB /* InfoPlist.strings */ = {
@@ -392,8 +407,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Subsurface/Subsurface-Prefix.pch";
-				INFOPLIST_FILE = "Subsurface/Subsurface-Info.plist";
+				GCC_PREFIX_HEADER = "Subsurface/Supporting Files/Subsurface-Prefix.pch";
+				INFOPLIST_FILE = "Subsurface/Supporting Files/Subsurface-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -405,8 +420,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Subsurface/Subsurface-Prefix.pch";
-				INFOPLIST_FILE = "Subsurface/Subsurface-Info.plist";
+				GCC_PREFIX_HEADER = "Subsurface/Supporting Files/Subsurface-Prefix.pch";
+				INFOPLIST_FILE = "Subsurface/Supporting Files/Subsurface-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -471,6 +486,7 @@
 				7C089091192A9A36007307FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7C089092192A9A36007307FB /* Build configuration list for PBXNativeTarget "SubsurfaceTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +495,7 @@
 				7C089094192A9A36007307FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

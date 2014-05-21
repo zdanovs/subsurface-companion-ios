@@ -1,5 +1,5 @@
 //
-//  SViewController.h
+//  SWelcomeVC.h
 //  Subsurface
 //
 //  Created by Andrey Zhdanov on 19/05/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SViewController : UIViewController
+@interface SWelcomeVC : UIViewController
 
 @end

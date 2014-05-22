@@ -52,7 +52,6 @@
                                               cancelButtonTitle:NSLocalizedString(@"Cancel", "")
                                               otherButtonTitles:NSLocalizedString(@"Send", ""), nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertView.tintColor = [UIColor redColor];
     
     UITextField *textField = [alertView textFieldAtIndex:0];
     textField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -65,7 +64,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         UITextField *alertTextField = [alertView textFieldAtIndex:0];
-        NSLog(@"alerttextfield: %@", alertTextField.text);
+        
+        [SWEB retrieveAccount:alertTextField.text];
     }
 }
 

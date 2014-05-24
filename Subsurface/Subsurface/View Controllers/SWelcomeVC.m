@@ -20,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(accountJustCreated:)
+                                                 name:@"NewlyCreatedAccountID"
+                                               object:nil];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -37,6 +41,13 @@
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     self.logInButton.enabled = NO;
     return YES;
+}
+
+#pragma mark - NSNotification methods
+
+- (void)accountJustCreated:(NSNotification *)notification {
+    self.existingIdTextField.text = notification.object;
+    self.logInButton.enabled = YES;
 }
 
 #pragma mark - IBActions

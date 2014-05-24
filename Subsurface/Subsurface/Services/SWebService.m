@@ -68,8 +68,9 @@ static SWebService *_staticWebService = nil;
              
              NSString *userID = greeting[@"user"];
              
-             NSArray *information = @[NSLocalizedString(@"You are one of us!", ""), [NSString stringWithFormat:@"%@ %@ %@\n%@", NSLocalizedString(@"Your new ID for", ""), email, NSLocalizedString(@"is:", ""), userID]];
+             NSArray *information = @[NSLocalizedString(@"You are one of us!", ""), [NSString stringWithFormat:@"%@\n%@:\n\n%@", NSLocalizedString(@"Your new ID for", ""), email, userID]];
              [self informUser:information];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"NewlyCreatedAccountID" object:userID];
          }
      }];
 }

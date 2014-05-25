@@ -66,6 +66,7 @@
 		7CD22858192D3EA3004D3A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		7CD2285A192D41DF004D3A21 /* SWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWebService.h; path = Services/SWebService.h; sourceTree = "<group>"; };
 		7CD2285B192D41DF004D3A21 /* SWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWebService.m; path = Services/SWebService.m; sourceTree = "<group>"; };
+		7CE7A68D1932382600DF5829 /* SDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 			children = (
 				7C08906C192A9A36007307FB /* SAppDelegate.h */,
 				7C08906D192A9A36007307FB /* SAppDelegate.m */,
+				7CE7A68D1932382600DF5829 /* SDefines.h */,
 				7C8FE7C4192D24F000C5B1D6 /* View Controllers */,
 				7CD22859192D418B004D3A21 /* Services */,
 				7C089064192A9A36007307FB /* Supporting Files */,

@@ -30,8 +30,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.existingIdTextField.text = @"OEWCT23D9TPW0SSBP0VTZH7OVGWQG0";
     self.navigationController.navigationBarHidden = YES;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userID = [userDefaults objectForKey:kUserIdKey];
+    self.existingIdTextField.text = userID;
+    
+    self.logInButton.enabled = userID.length > 0;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -73,6 +78,10 @@
 
 - (IBAction)LogInButtonAction:(id)sender {    
     [self.view endEditing:YES];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:self.existingIdTextField.text forKey:kUserIdKey];
+    [userDefaults synchronize];
 }
 
 - (IBAction)SendIdButtonAction:(id)sender {

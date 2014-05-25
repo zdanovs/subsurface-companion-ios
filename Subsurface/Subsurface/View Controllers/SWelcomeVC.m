@@ -37,6 +37,7 @@
     self.existingIdTextField.text = userID;
     
     self.logInButton.enabled = userID.length > 0;
+    self.existingIdTextField.enablesReturnKeyAutomatically = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

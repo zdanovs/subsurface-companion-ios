@@ -64,7 +64,7 @@ static SWebService *_staticWebService = nil;
              
              NSArray *information = @[NSLocalizedString(@"You are one of us!", ""), [NSString stringWithFormat:@"%@\n%@:\n\n%@", NSLocalizedString(@"Your new ID for", ""), email, userID]];
              [self informUser:information];
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"NewlyCreatedAccountID" object:userID];
+             [[NSNotificationCenter defaultCenter] postNotificationName:kCreatedAccountNotification object:userID];
          }
      }];
 }
@@ -91,7 +91,7 @@ static SWebService *_staticWebService = nil;
              NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
              NSArray *divesListArray = json[@"dives"];
              
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"DivesListIsLoaded" object:divesListArray];
+             [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:divesListArray];
          }
      }];
 }

@@ -23,7 +23,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(accountJustCreated:)
-                                                 name:@"NewlyCreatedAccountID"
+                                                 name:kCreatedAccountNotification
                                                object:nil];
 }
 
@@ -51,6 +51,12 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self performSegueWithIdentifier:@"LoadDivesList" sender:nil];
+    return YES;
+}
+
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     self.logInButton.enabled = NO;
     return YES;
@@ -69,6 +75,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"LoadDivesList"]) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:self.existingIdTextField.text forKey:kUserIdKey];
+        [userDefaults synchronize];
+        
         SDivesListTVC *vc = [segue destinationViewController];
         vc.userID = self.existingIdTextField.text;
     }
@@ -78,10 +88,6 @@
 
 - (IBAction)LogInButtonAction:(id)sender {    
     [self.view endEditing:YES];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:self.existingIdTextField.text forKey:kUserIdKey];
-    [userDefaults synchronize];
 }
 
 - (IBAction)SendIdButtonAction:(id)sender {

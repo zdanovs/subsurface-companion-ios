@@ -29,7 +29,7 @@
     [SWEB getDivesList:self.userID];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(divesListReceived:)
-                                                 name:@"DivesListIsLoaded"
+                                                 name:kDivesListLoadNotification
                                                object:nil];
 }
 

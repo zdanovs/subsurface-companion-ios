@@ -35,11 +35,8 @@ static SWebService *_staticWebService = nil;
     {
         if (data.length > 0 && connectionError == nil) {
              
-             NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
-                                                                      options:0
-                                                                        error:NULL];
-             
-             NSString *result = greeting[@"request"];
+             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             NSString *result = json[@"request"];
              
              if ([result isEqualToString:@"ok"]) {
                  NSArray *information = @[NSLocalizedString(@"ID Retrieval", ""), [NSString stringWithFormat:@"%@\n%@", NSLocalizedString(@"Your ID was send to", ""), email]];
@@ -62,11 +59,8 @@ static SWebService *_staticWebService = nil;
      {
          if (data.length > 0 && connectionError == nil) {
              
-             NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
-                                                                      options:0
-                                                                        error:NULL];
-             
-             NSString *userID = greeting[@"user"];
+             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             NSString *userID = json[@"user"];
              
              NSArray *information = @[NSLocalizedString(@"You are one of us!", ""), [NSString stringWithFormat:@"%@\n%@:\n\n%@", NSLocalizedString(@"Your new ID for", ""), email, userID]];
              [self informUser:information];
@@ -82,6 +76,24 @@ static SWebService *_staticWebService = nil;
                                               cancelButtonTitle:NSLocalizedString(@"Got it!", "")
                                               otherButtonTitles:nil, nil];
     [alertView show];
+}
+
+- (void)getDivesList:(NSString *)userID {
+    NSString *urlString = [NSString stringWithFormat:@"%@/dive/get/?login=%@", kServerAddress, userID];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url]
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil) {
+             
+             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             NSArray *divesListArray = json[@"dives"];
+             
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"DivesListIsLoaded" object:divesListArray];
+         }
+     }];
 }
 
 @end

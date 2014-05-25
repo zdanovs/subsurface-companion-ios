@@ -7,6 +7,7 @@
 //
 
 #import "SWelcomeVC.h"
+#import "SDivesListTVC.h"
 
 @interface SWelcomeVC ()
 
@@ -24,6 +25,13 @@
                                              selector:@selector(accountJustCreated:)
                                                  name:@"NewlyCreatedAccountID"
                                                object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.existingIdTextField.text = @"OEWCT23D9TPW0SSBP0VTZH7OVGWQG0";
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -50,10 +58,21 @@
     self.logInButton.enabled = YES;
 }
 
+
+
+#pragma mark - Preparing Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"LoadDivesList"]) {
+        SDivesListTVC *vc = [segue destinationViewController];
+        vc.userID = self.existingIdTextField.text;
+    }
+}
+
 #pragma mark - IBActions
 
-- (IBAction)LogInButtonAction:(id)sender {
-    
+- (IBAction)LogInButtonAction:(id)sender {    
+    [self.view endEditing:YES];
 }
 
 - (IBAction)SendIdButtonAction:(id)sender {

@@ -12,6 +12,7 @@
 @interface SDivesListTVC ()
 
 @property NSArray *divesList;
+@property NSArray *initialDivesList;
 
 @end
 
@@ -103,10 +104,21 @@
 }
  */
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([searchText isEqualToString:@""]) {
+        _divesList = _initialDivesList;
+    } else {
+        _divesList = [_initialDivesList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(name contains[cd] %@)", searchText]];
+    }
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - NSNotification methods
 
 - (void)divesListReceived:(NSNotification *)notification {
     _divesList = notification.object;
+    _initialDivesList = _divesList.copy;
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }

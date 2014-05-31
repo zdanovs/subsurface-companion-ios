@@ -26,6 +26,8 @@
 		7CD22853192D3E6D004D3A21 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C08906F192A9A36007307FB /* Main_iPhone.storyboard */; };
 		7CD22854192D3E6D004D3A21 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C089072192A9A36007307FB /* Main_iPad.storyboard */; };
 		7CD2285C192D41DF004D3A21 /* SWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2285B192D41DF004D3A21 /* SWebService.m */; };
+		7CD8E099193A547A006F0778 /* SModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E097193A547A006F0778 /* SModel.xcdatamodeld */; };
+		7CD8E09C193A8E40006F0778 /* Dive.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E09B193A8E40006F0778 /* Dive.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,9 @@
 		7CD22858192D3EA3004D3A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		7CD2285A192D41DF004D3A21 /* SWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWebService.h; path = Services/SWebService.h; sourceTree = "<group>"; };
 		7CD2285B192D41DF004D3A21 /* SWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWebService.m; path = Services/SWebService.m; sourceTree = "<group>"; };
+		7CD8E098193A547A006F0778 /* SModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SModel.xcdatamodel; sourceTree = "<group>"; };
+		7CD8E09A193A8E40006F0778 /* Dive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dive.h; sourceTree = "<group>"; };
+		7CD8E09B193A8E40006F0778 /* Dive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dive.m; sourceTree = "<group>"; };
 		7CE7A68D1932382600DF5829 /* SDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +139,7 @@
 				7CE7A68D1932382600DF5829 /* SDefines.h */,
 				7C8FE7C4192D24F000C5B1D6 /* View Controllers */,
 				7CD22859192D418B004D3A21 /* Services */,
+				7CD8E096193A5416006F0778 /* Models */,
 				7C089064192A9A36007307FB /* Supporting Files */,
 			);
 			path = Subsurface;
@@ -201,6 +207,16 @@
 				7CD2285B192D41DF004D3A21 /* SWebService.m */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		7CD8E096193A5416006F0778 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CD8E097193A547A006F0778 /* SModel.xcdatamodeld */,
+				7CD8E09A193A8E40006F0778 /* Dive.h */,
+				7CD8E09B193A8E40006F0778 /* Dive.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +325,8 @@
 				7CD2285C192D41DF004D3A21 /* SWebService.m in Sources */,
 				7C26B8E41930C358008C90E8 /* SDiveTableCell.m in Sources */,
 				7C08906A192A9A36007307FB /* main.m in Sources */,
+				7CD8E09C193A8E40006F0778 /* Dive.m in Sources */,
+				7CD8E099193A547A006F0778 /* SModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +558,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7CD8E097193A547A006F0778 /* SModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7CD8E098193A547A006F0778 /* SModel.xcdatamodel */,
+			);
+			currentVersion = 7CD8E098193A547A006F0778 /* SModel.xcdatamodel */;
+			path = SModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7C089052192A9A36007307FB /* Project object */;
 }

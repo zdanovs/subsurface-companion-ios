@@ -18,5 +18,6 @@
 #pragma mark - Service API
 - (void)retrieveAccount:(NSString *)email;
 - (void)getDivesList:(NSString *)userID;
+- (void)deleteDive:(NSDictionary *)dive;
 
 @end

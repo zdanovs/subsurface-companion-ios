@@ -96,4 +96,18 @@ static SWebService *_staticWebService = nil;
      }];
 }
 
+- (void)deleteDive:(NSDictionary *)dive {
+    NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/dive/delete/login=%@&dive_date=%@&dive_time=%@", kServerAddress, userID, dive[@"date"], dive[@"time"]];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"DELETE";
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {}];
+}
+
 @end

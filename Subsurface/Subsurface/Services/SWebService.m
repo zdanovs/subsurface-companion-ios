@@ -10,6 +10,10 @@
 
 #define kServerAddress  @"http://api.hohndel.org/api"
 
+@interface SWebService ()
+@property NSString *diveNewName;
+@end
+
 @implementation SWebService
 
 static SWebService *_staticWebService = nil;
@@ -104,6 +108,43 @@ static SWebService *_staticWebService = nil;
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"DELETE";
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {}];
+}
+
+- (void)addDive:(NSString *)diveName {
+    self.diveNewName = diveName;
+    
+    if (!locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLDistanceFilterNone;
+    }
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *newLocation = [locations lastObject];
+    [locationManager stopUpdatingLocation];
+    
+    NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
+    
+    NSDate *now = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+    [timeFormat setDateFormat:@"HH:mm:ss"];
+    NSString *dateString = [dateFormat stringFromDate:now];
+    NSString *timeString = [timeFormat stringFromDate:now];
+    
+    NSString *bodyString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_latitude=%f&dive_longitude=%f&dive_time=%@&dive_name=%@", userID, dateString, newLocation.coordinate.latitude, newLocation.coordinate.longitude, timeString, self.diveNewName];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/dive/add/", kServerAddress]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = [bodyString dataUsingEncoding:NSASCIIStringEncoding];
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]

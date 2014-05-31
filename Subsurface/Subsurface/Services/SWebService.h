@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 #define SWEB    [SWebService sharedWebService]
 
-@interface SWebService : NSObject
+@interface SWebService : NSObject <CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+}
 
 #pragma mark - Shared instance
 + (SWebService *)sharedWebService;
@@ -19,5 +22,6 @@
 - (void)retrieveAccount:(NSString *)email;
 - (void)getDivesList:(NSString *)userID;
 - (void)deleteDive:(NSDictionary *)dive;
+- (void)addDive:(NSString *)diveName;
 
 @end

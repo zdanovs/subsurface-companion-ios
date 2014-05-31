@@ -103,11 +103,12 @@ static SWebService *_staticWebService = nil;
 - (void)deleteDive:(NSDictionary *)dive {
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/dive/delete/login=%@&dive_date=%@&dive_time=%@", kServerAddress, userID, dive[@"date"], dive[@"time"]];
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *urlString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_time=%@", userID, dive[@"date"], dive[@"time"]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/dive/delete/", kServerAddress]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"DELETE";
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = [urlString dataUsingEncoding:NSASCIIStringEncoding];
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]

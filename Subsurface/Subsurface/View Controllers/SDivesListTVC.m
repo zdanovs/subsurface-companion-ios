@@ -8,6 +8,7 @@
 
 #import "SDivesListTVC.h"
 #import "SDiveTableCell.h"
+#import "SAddDiveTableCell.h"
 
 @interface SDivesListTVC ()
 
@@ -44,15 +45,22 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _divesList.count;
+    return _divesList.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SDiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DiveCell" forIndexPath:indexPath];
+    UITableViewCell *commonCell = nil;
     
-    [cell setupDiveCell:_divesList[indexPath.row]];
+    if (indexPath.row == 0) {
+        SAddDiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddDiveCell" forIndexPath:indexPath];
+        commonCell = cell;
+    } else {
+        SDiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DiveCell" forIndexPath:indexPath];
+        [cell setupDiveCell:_divesList[indexPath.row - 1]];
+        commonCell = cell;
+    }
     
-    return cell;
+    return commonCell;
 }
 
 /*
@@ -66,7 +74,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSDictionary *dive = _divesList[indexPath.row];
+        NSDictionary *dive = _divesList[indexPath.row - 1];
         
         NSMutableArray *mutableDivesList = [_divesList mutableCopy];
         [mutableDivesList removeObject:dive];

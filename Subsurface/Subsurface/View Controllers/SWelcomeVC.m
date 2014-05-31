@@ -37,6 +37,7 @@
     self.existingIdTextField.text = userID;
     
     self.logInButton.enabled = userID.length > 0;
+    self.existingIdTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:userID.length  > 0 ? 11.0f : 16.0f];
     self.existingIdTextField.enablesReturnKeyAutomatically = YES;
 }
 
@@ -49,6 +50,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSUInteger enteredTextLength = textField.text.length - range.length + string.length;
     self.logInButton.enabled = enteredTextLength > 0;
+    self.existingIdTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:enteredTextLength > 0 ? 11.0f : 16.0f];
     return YES;
 }
 
@@ -60,6 +62,7 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     self.logInButton.enabled = NO;
+    self.existingIdTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f];
     return YES;
 }
 

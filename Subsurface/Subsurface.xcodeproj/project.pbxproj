@@ -27,7 +27,7 @@
 		7CD22854192D3E6D004D3A21 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C089072192A9A36007307FB /* Main_iPad.storyboard */; };
 		7CD2285C192D41DF004D3A21 /* SWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2285B192D41DF004D3A21 /* SWebService.m */; };
 		7CD8E099193A547A006F0778 /* SModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E097193A547A006F0778 /* SModel.xcdatamodeld */; };
-		7CD8E09C193A8E40006F0778 /* Dive.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E09B193A8E40006F0778 /* Dive.m */; };
+		7CD8E09F193B1E61006F0778 /* SDive.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E09E193B1E61006F0778 /* SDive.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +72,8 @@
 		7CD2285A192D41DF004D3A21 /* SWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWebService.h; path = Services/SWebService.h; sourceTree = "<group>"; };
 		7CD2285B192D41DF004D3A21 /* SWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWebService.m; path = Services/SWebService.m; sourceTree = "<group>"; };
 		7CD8E098193A547A006F0778 /* SModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SModel.xcdatamodel; sourceTree = "<group>"; };
-		7CD8E09A193A8E40006F0778 /* Dive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dive.h; sourceTree = "<group>"; };
-		7CD8E09B193A8E40006F0778 /* Dive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dive.m; sourceTree = "<group>"; };
+		7CD8E09D193B1E61006F0778 /* SDive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDive.h; sourceTree = "<group>"; };
+		7CD8E09E193B1E61006F0778 /* SDive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDive.m; sourceTree = "<group>"; };
 		7CE7A68D1932382600DF5829 /* SDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,9 +212,9 @@
 		7CD8E096193A5416006F0778 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7CD8E09D193B1E61006F0778 /* SDive.h */,
+				7CD8E09E193B1E61006F0778 /* SDive.m */,
 				7CD8E097193A547A006F0778 /* SModel.xcdatamodeld */,
-				7CD8E09A193A8E40006F0778 /* Dive.h */,
-				7CD8E09B193A8E40006F0778 /* Dive.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 				7CD2285C192D41DF004D3A21 /* SWebService.m in Sources */,
 				7C26B8E41930C358008C90E8 /* SDiveTableCell.m in Sources */,
 				7C08906A192A9A36007307FB /* main.m in Sources */,
-				7CD8E09C193A8E40006F0778 /* Dive.m in Sources */,
+				7CD8E09F193B1E61006F0778 /* SDive.m in Sources */,
 				7CD8E099193A547A006F0778 /* SModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

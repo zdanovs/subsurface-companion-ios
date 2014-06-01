@@ -7,6 +7,7 @@
 //
 
 #import "SWebService.h"
+#import "SCoreDiveService.h"
 
 #define kServerAddress  @"http://api.hohndel.org/api"
 
@@ -95,15 +96,31 @@ static SWebService *_staticWebService = nil;
              NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
              NSArray *divesListArray = json[@"dives"];
              
-             [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:divesListArray];
+             NSMutableArray *updatedDives = [NSMutableArray arrayWithCapacity:divesListArray.count];
+             for (NSDictionary *dive in divesListArray) {
+                 NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dive];
+                 [dict setObject:[NSNumber numberWithBool:YES] forKey:@"uploaded"];
+                 [updatedDives addObject:dict];
+             }
+             
+             [SDIVE storeDives:updatedDives];
+             
+             [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:updatedDives];
          }
      }];
 }
 
-- (void)deleteDive:(NSDictionary *)dive {
+- (void)deleteDive:(SDive *)dive {
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
     
-    NSString *urlString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_time=%@", userID, dive[@"date"], dive[@"time"]];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+    [timeFormat setDateFormat:@"HH:mm:ss"];
+    NSString *dateString = [dateFormat stringFromDate:dive.date];
+    NSString *timeString = [timeFormat stringFromDate:dive.date];
+    
+    NSString *urlString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_time=%@", userID, dateString, timeString];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/dive/delete/", kServerAddress]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -112,7 +129,11 @@ static SWebService *_staticWebService = nil;
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {}];
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                           
+                               [SDIVE removeDive:dive];
+                               
+                           }];
 }
 
 - (void)addDive:(NSString *)diveName {
@@ -149,7 +170,18 @@ static SWebService *_staticWebService = nil;
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {}];
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               
+                               NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                               [dict setObject:self.diveNewName forKey:@"name"];
+                               [dict setObject:[NSNumber numberWithFloat:newLocation.coordinate.latitude] forKey:@"latitude"];
+                               [dict setObject:[NSNumber numberWithFloat:newLocation.coordinate.longitude] forKey:@"longitude"];
+                               [dict setObject:dateString forKey:@"date"];
+                               [dict setObject:timeString forKey:@"time"];
+                               [dict setObject:[NSNumber numberWithBool:!connectionError] forKey:@"uploaded"];
+                               
+                               [SDIVE storeDive:dict];
+                           }];
 }
 
 @end

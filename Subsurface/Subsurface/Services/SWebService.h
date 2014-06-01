@@ -11,6 +11,8 @@
 
 #define SWEB    [SWebService sharedWebService]
 
+@class SDive;
+
 @interface SWebService : NSObject <CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
 }
@@ -21,7 +23,7 @@
 #pragma mark - Service API
 - (void)retrieveAccount:(NSString *)email;
 - (void)getDivesList:(NSString *)userID;
-- (void)deleteDive:(NSDictionary *)dive;
+- (void)deleteDive:(SDive *)dive;
 - (void)addDive:(NSString *)diveName;
 
 @end

@@ -48,25 +48,29 @@ static SCoreDiveService *_staticDiveService = nil;
 }
 
 - (void)saveDiveToDBWithData:(NSDictionary *)diveData {
-    SDive *dive = [self.internalContext insertEntityWithName:kDbTableDive];
-    dive.name = diveData[@"name"];
-    dive.latitude = [NSNumber numberWithFloat:[diveData[@"latitude"] floatValue]];
-    dive.longitude = [NSNumber numberWithFloat:[diveData[@"longitude"] floatValue]];
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     NSDate *convertedDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", diveData[@"date"], diveData[@"time"]]];
     
-    dive.date = convertedDate;
-    dive.uploaded = 0;
+    if (![self diveExists:convertedDate]) {
+        SDive *dive = [self.internalContext insertEntityWithName:kDbTableDive];
+        dive.name = diveData[@"name"];
+        dive.latitude = [NSNumber numberWithFloat:[diveData[@"latitude"] floatValue]];
+        dive.longitude = [NSNumber numberWithFloat:[diveData[@"longitude"] floatValue]];
+        
+        dive.date = convertedDate;
+        dive.uploaded = diveData[@"uploaded"];
+    }
 }
 
 #pragma mark - Getting dives
 - (NSArray *)getDives {
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    
     NSArray *divesArray = [self.internalContext fetchDataWithEntityName:kDbTableDive
                                                               predicate:nil
-                                                                   sort:nil
+                                                                   sort:@[sortDescriptor]
                                                                  fields:nil
                                                                    type:NSManagedObjectResultType
                                                                   limit:-1
@@ -74,9 +78,22 @@ static SCoreDiveService *_staticDiveService = nil;
     return divesArray;
 }
 
+- (BOOL)diveExists:(NSDate *)date {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date == %@)", date];
+    
+    NSArray *divesArray = [self.internalContext fetchDataWithEntityName:kDbTableDive
+                                                              predicate:predicate
+                                                                   sort:nil
+                                                                 fields:nil
+                                                                   type:NSManagedObjectResultType
+                                                                  limit:-1
+                                                               distinct:NO];
+    return divesArray.count;
+}
+
 #pragma mark - Removing dives
 - (void)removeDive:(SDive *)dive {
-    
+    [self.internalContext deleteObject:dive];
 }
 
 #pragma mark - Save service state

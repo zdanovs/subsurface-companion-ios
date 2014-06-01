@@ -9,6 +9,7 @@
 #import "SDivesListTVC.h"
 #import "SDiveTableCell.h"
 #import "SAddDiveTableCell.h"
+#import "SCoreDiveService.h"
 
 @interface SDivesListTVC ()
 
@@ -29,6 +30,10 @@
     
     _divesList = [NSArray array];
     [SWEB getDivesList:self.userID];
+    
+    _divesList = [SDIVE getDives];
+    _initialDivesList = _divesList.copy;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(divesListReceived:)
                                                  name:kDivesListLoadNotification
@@ -74,7 +79,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSDictionary *dive = _divesList[indexPath.row - 1];
+        SDive *dive = _divesList[indexPath.row - 1];
         
         NSMutableArray *mutableDivesList = [_divesList mutableCopy];
         [mutableDivesList removeObject:dive];
@@ -125,7 +130,7 @@
 #pragma mark - NSNotification methods
 
 - (void)divesListReceived:(NSNotification *)notification {
-    _divesList = notification.object;
+    _divesList = [SDIVE getDives];
     _initialDivesList = _divesList.copy;
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];

@@ -7,6 +7,7 @@
 //
 
 #import "SDiveTableCell.h"
+#import "SCoreDiveService.h"
 
 @interface SDiveTableCell ()
 
@@ -18,10 +19,18 @@
 
 @implementation SDiveTableCell
 
-- (void)setupDiveCell:(NSDictionary *)diveDictionary {
-    _diveNameLabel.text = diveDictionary[@"name"];
-    _diveDateLabel.text = diveDictionary[@"date"];
-    _diveTimeLabel.text = diveDictionary[@"time"];
+- (void)setupDiveCell:(SDive *)dive {
+    _diveNameLabel.text = dive.name;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+    [timeFormat setDateFormat:@"HH:mm:ss"];
+    NSString *dateString = [dateFormat stringFromDate:dive.date];
+    NSString *timeString = [timeFormat stringFromDate:dive.date];
+    
+    _diveDateLabel.text = dateString;
+    _diveTimeLabel.text = timeString;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

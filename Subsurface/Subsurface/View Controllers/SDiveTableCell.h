@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SDive;
+
 @interface SDiveTableCell : UITableViewCell
 
-- (void)setupDiveCell:(NSDictionary *)diveDictionary;
+- (void)setupDiveCell:(SDive *)dive;
 
 @end

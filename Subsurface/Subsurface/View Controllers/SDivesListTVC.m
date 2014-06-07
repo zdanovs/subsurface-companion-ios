@@ -13,6 +13,8 @@
 
 @interface SDivesListTVC ()
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+
 @property NSArray *divesList;
 @property NSArray *initialDivesList;
 
@@ -68,15 +70,6 @@
     return commonCell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         SDive *dive = _divesList[indexPath.row - 1];
@@ -90,32 +83,16 @@
     }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Detemine if it's in editing mode
+    if (self.tableView.editing) {
+        return UITableViewCellEditingStyleNone;
+    }
+    
+    return UITableViewCellEditingStyleDelete;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
- */
+#pragma mark - Additional actions
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText isEqualToString:@""]) {
@@ -125,6 +102,10 @@
     }
     
     [self.tableView reloadData];
+}
+
+- (IBAction)editButtonAction:(id)sender {
+    [self.tableView setEditing:YES animated:YES];
 }
 
 #pragma mark - NSNotification methods

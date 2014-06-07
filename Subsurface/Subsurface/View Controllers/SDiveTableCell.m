@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *diveNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveTimeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *cloudImageView;
 
 @end
 
@@ -31,6 +32,10 @@
     
     _diveDateLabel.text = dateString;
     _diveTimeLabel.text = timeString;
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        self.cloudImageView.alpha = dive.uploaded.boolValue ? 0.6f : 0.0f;
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

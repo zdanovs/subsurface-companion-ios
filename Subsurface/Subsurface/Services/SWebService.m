@@ -178,7 +178,7 @@ static SWebService *_staticWebService = nil;
                                [dict setObject:[NSNumber numberWithFloat:newLocation.coordinate.longitude] forKey:@"longitude"];
                                [dict setObject:dateString forKey:@"date"];
                                [dict setObject:timeString forKey:@"time"];
-                               [dict setObject:[NSNumber numberWithBool:!connectionError] forKey:@"uploaded"];
+                               [dict setObject:[NSNumber numberWithBool:(connectionError == nil)] forKey:@"uploaded"];
                                
                                [SDIVE storeDive:dict];
                            }];

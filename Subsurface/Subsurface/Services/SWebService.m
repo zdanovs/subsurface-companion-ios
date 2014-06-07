@@ -132,6 +132,7 @@ static SWebService *_staticWebService = nil;
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                            
                                [SDIVE removeDive:dive];
+                               [SDIVE saveState];
                                
                            }];
 }

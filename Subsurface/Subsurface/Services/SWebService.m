@@ -146,7 +146,7 @@ static SWebService *_staticWebService = nil;
     NSString *dateString = [dateFormat stringFromDate:dive.date];
     NSString *timeString = [timeFormat stringFromDate:dive.date];
     
-    NSString *bodyString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_latitude=%f&dive_longitude=%f&dive_time=%@&dive_name=%@", userID, dateString, [dive.latitude floatValue], [dive.longitude floatValue], timeString, self.diveNewName];
+    NSString *bodyString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_latitude=%f&dive_longitude=%f&dive_time=%@&dive_name=%@", userID, dateString, [dive.latitude floatValue], [dive.longitude floatValue], timeString, dive.name];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/dive/add/", kServerAddress]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -158,13 +158,14 @@ static SWebService *_staticWebService = nil;
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                
                                NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                               [dict setObject:self.diveNewName forKey:@"name"];
+                               [dict setObject:dive.name forKey:@"name"];
                                [dict setObject:dive.latitude forKey:@"latitude"];
                                [dict setObject:dive.longitude forKey:@"longitude"];
                                [dict setObject:dateString forKey:@"date"];
                                [dict setObject:timeString forKey:@"time"];
                                [dict setObject:[NSNumber numberWithBool:(connectionError == nil)] forKey:@"uploaded"];
                                
+                               dive.uploaded = [NSNumber numberWithBool:(connectionError == nil)];
                                [SDIVE storeDive:dict];
                            }];
 }

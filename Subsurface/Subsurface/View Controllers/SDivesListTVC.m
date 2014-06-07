@@ -151,9 +151,27 @@
 #pragma mark - UIButtons actions
 
 - (IBAction)uploadDivesButtonAction:(id)sender {
+    NSArray *selectedDives = [self getSelectedDives];
+    
+    for (SDive *dive in selectedDives) {
+        [SWEB uploadDive:dive];
+    }
+    
+    [self.tableView reloadData];
 }
 
 - (IBAction)deleteDivesButtonAction:(id)sender {
+    NSArray *selectedDives = [self getSelectedDives];
+    
+    NSMutableArray *mutableDivesList = self.divesList.mutableCopy;
+    [mutableDivesList removeObjectsInArray:selectedDives];
+    self.divesList = mutableDivesList.copy;
+    
+    for (SDive *dive in selectedDives) {
+        [SWEB deleteDive:dive];
+    }
+    
+    [self.tableView deleteRowsAtIndexPaths:[self.tableView indexPathsForSelectedRows] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)addNewDiveAction {
@@ -196,6 +214,17 @@
 - (void)updateBottomToolbarButtonsState {
     self.uploadDivesButton.enabled = [self.tableView indexPathsForSelectedRows].count > 0;
     self.deleteDivesButton.enabled = [self.tableView indexPathsForSelectedRows].count > 0;
+}
+
+- (NSArray *)getSelectedDives {
+    NSMutableIndexSet *selectedIndexSet = [NSMutableIndexSet indexSet];
+    
+    NSArray *selectedPaths = [self.tableView indexPathsForSelectedRows];
+    for (NSIndexPath *indexPath in selectedPaths) {
+        [selectedIndexSet addIndex:indexPath.row];
+    }
+    
+    return [self.divesList objectsAtIndexes:selectedIndexSet];
 }
 
 @end

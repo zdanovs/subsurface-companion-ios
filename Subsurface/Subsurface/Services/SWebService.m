@@ -175,10 +175,10 @@ static SWebService *_staticWebService = nil;
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               
-                               [diveInfo setObject:[NSNumber numberWithBool:(connectionError == nil)] forKey:@"uploaded"];
-                               [SDIVE storeDive:diveInfo];
-                               
+    
+                               [diveInfo setObject:[NSNumber numberWithBool:NO] forKey:@"uploaded"];
+                               [SDIVE storeDives:@[diveInfo]];
+    
                            }];
 }
 

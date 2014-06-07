@@ -11,6 +11,7 @@
 #import "SCoreDiveService.h"
 
 #define kCellHeight    54.0f
+#define kHeaderHeight    45.0f
 
 @interface SDivesListTVC ()
 
@@ -50,7 +51,7 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
-    self.tableView.contentOffset = CGPointMake(0, kCellHeight);
+    self.tableView.contentOffset = CGPointMake(0, kHeaderHeight);
 }
 
 #pragma mark - Table view data source
@@ -100,7 +101,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIToolbar *bkgToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kCellHeight + 1)];
+    UIToolbar *bkgToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeaderHeight)];
 
     UIButton *addDiveButton = [[UIButton alloc] initWithFrame:bkgToolbar.frame];
     addDiveButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
@@ -108,7 +109,7 @@
     [addDiveButton addTarget:self action:@selector(addNewDiveAction) forControlEvents:UIControlEventTouchUpInside];
     [addDiveButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
     
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, kCellHeight, self.tableView.frame.size.width, 1)];
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeaderHeight - 1, self.tableView.frame.size.width, 1)];
     separatorView.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1.0];
     
     UIView *headerView = [[UIView alloc] initWithFrame:bkgToolbar.frame];
@@ -120,7 +121,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return kCellHeight + 1;
+    return kHeaderHeight;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {

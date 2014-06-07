@@ -14,6 +14,9 @@
 
 @interface SDivesListTVC ()
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *uploadDivesButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteDivesButton;
+
 @property NSArray *divesList;
 @property NSArray *initialDivesList;
 
@@ -66,6 +69,14 @@
     return commonCell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self updateBottomToolbarButtonsState];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self updateBottomToolbarButtonsState];
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         SDive *dive = _divesList[indexPath.row];
@@ -112,48 +123,14 @@
     return kCellHeight + 1;
 }
 
-#pragma mark - Additional actions
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if ([searchText isEqualToString:@""]) {
-        _divesList = _initialDivesList;
-    } else {
-        _divesList = [_initialDivesList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(name contains[cd] %@)", searchText]];
-    }
-    
-    [self.tableView reloadData];
-}
-
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
     self.tableView.allowsMultipleSelectionDuringEditing = editing;
     [self.tableView reloadData];
-}
-
-- (void)addNewDiveAction {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enter dive name", "")
-                                                        message:@""
-                                                       delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cancel", "")
-                                              otherButtonTitles:NSLocalizedString(@"Add", ""), nil];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     
-    UITextField *textField = [alertView textFieldAtIndex:0];
-    textField.keyboardType = UIKeyboardTypeEmailAddress;
-    textField.textAlignment = NSTextAlignmentCenter;
-    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    textField.placeholder = @"dive name";
-    
-    [alertView show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        UITextField *alertTextField = [alertView textFieldAtIndex:0];
-        
-        [SWEB addDive:alertTextField.text];
-    }
+    [self.navigationController setToolbarHidden:!editing animated:YES];
+    [self updateBottomToolbarButtonsState];
 }
 
 #pragma mark - NSNotification methods
@@ -169,6 +146,56 @@
 
 - (void)handleRefresh:(id)sender {
     [SWEB getDivesList:self.userID];
+}
+
+#pragma mark - UIButtons actions
+
+- (IBAction)uploadDivesButtonAction:(id)sender {
+}
+
+- (IBAction)deleteDivesButtonAction:(id)sender {
+}
+
+- (void)addNewDiveAction {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enter dive name", "")
+                                                        message:@""
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"Cancel", "")
+                                              otherButtonTitles:NSLocalizedString(@"Add", ""), nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.keyboardType = UIKeyboardTypeEmailAddress;
+    textField.textAlignment = NSTextAlignmentCenter;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    textField.placeholder = @"Dive name";
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        UITextField *alertTextField = [alertView textFieldAtIndex:0];
+        
+        [SWEB addDive:alertTextField.text];
+    }
+}
+
+#pragma mark - Additional actions
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([searchText isEqualToString:@""]) {
+        _divesList = _initialDivesList;
+    } else {
+        _divesList = [_initialDivesList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(name contains[cd] %@)", searchText]];
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (void)updateBottomToolbarButtonsState {
+    self.uploadDivesButton.enabled = [self.tableView indexPathsForSelectedRows].count > 0;
+    self.deleteDivesButton.enabled = [self.tableView indexPathsForSelectedRows].count > 0;
 }
 
 @end

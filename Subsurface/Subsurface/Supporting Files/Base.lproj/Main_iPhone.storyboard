@@ -183,9 +183,28 @@ Enter your </string>
                             <outlet property="delegate" destination="E7k-QU-t3W" id="CjZ-JO-Mqh"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="action" id="K4w-8t-jcJ">
+                            <connections>
+                                <action selector="uploadDivesButtonAction:" destination="E7k-QU-t3W" id="Byd-4Z-N35"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4Zc-zL-HF6"/>
+                        <barButtonItem style="plain" systemItem="trash" id="L9F-PU-btd">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deleteDivesButtonAction:" destination="E7k-QU-t3W" id="lRR-0g-Qyh"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Subsurface" id="8RJ-KT-J3O"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="deleteDivesButton" destination="L9F-PU-btd" id="KOu-uF-brW"/>
+                        <outlet property="uploadDivesButton" destination="K4w-8t-jcJ" id="89Z-vA-Gog"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5Q-vU-Auy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

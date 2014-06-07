@@ -13,8 +13,6 @@
 
 @interface SDivesListTVC ()
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
-
 @property NSArray *divesList;
 @property NSArray *initialDivesList;
 
@@ -24,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -104,8 +104,14 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)editButtonAction:(id)sender {
-    [self.tableView setEditing:YES animated:YES];
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    if (editing) {
+        // Your code for entering edit mode goes here
+    } else {
+        // Your code for exiting edit mode goes here
+    }
 }
 
 #pragma mark - NSNotification methods

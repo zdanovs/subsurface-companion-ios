@@ -10,7 +10,7 @@
 #import "SDiveTableCell.h"
 #import "SCoreDiveService.h"
 
-#define kCellHeight    44.0f
+#define kCellHeight    54.0f
 
 @interface SDivesListTVC ()
 

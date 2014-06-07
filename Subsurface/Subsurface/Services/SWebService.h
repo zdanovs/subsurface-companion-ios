@@ -24,6 +24,7 @@
 - (void)retrieveAccount:(NSString *)email;
 - (void)getDivesList:(NSString *)userID;
 - (void)deleteDive:(SDive *)dive;
+- (void)uploadDive:(SDive *)dive;
 - (void)addDive:(NSString *)diveName;
 
 @end

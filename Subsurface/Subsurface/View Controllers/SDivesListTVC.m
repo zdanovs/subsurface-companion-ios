@@ -33,13 +33,13 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = self.refreshControl;
-    [self.refreshControl beginRefreshing];
-    
-    _divesList = [NSArray array];
-    [SWEB getDivesList:self.userID];
     
     _divesList = [SDIVE getDives];
     _initialDivesList = _divesList.copy;
+    
+    if (self.divesList.count < 1) {
+        [SWEB getDivesList:self.userID];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(divesListReceived:)

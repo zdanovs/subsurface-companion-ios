@@ -111,7 +111,7 @@ Enter your </string>
             </objects>
             <point key="canvasLocation" x="559" y="61"/>
         </scene>
-        <!--Dives ListTVC - Subsurface-->
+        <!--Dives ListTVC - Dives List-->
         <scene sceneID="Ma4-YC-zmH">
             <objects>
                 <tableViewController id="E7k-QU-t3W" customClass="SDivesListTVC" sceneMemberID="viewController">
@@ -195,7 +195,7 @@ Enter your </string>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Subsurface" id="8RJ-KT-J3O"/>
+                    <navigationItem key="navigationItem" title="Dives List" id="8RJ-KT-J3O"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

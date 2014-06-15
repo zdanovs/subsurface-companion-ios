@@ -242,4 +242,9 @@
     }
 }
 
+#pragma mark - Status bar appear
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

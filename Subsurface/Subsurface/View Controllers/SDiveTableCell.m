@@ -24,16 +24,8 @@
     self.dive = dive;
     
     _diveNameLabel.text = dive.name;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-    [timeFormat setDateFormat:@"HH:mm:ss"];
-    NSString *dateString = [dateFormat stringFromDate:dive.date];
-    NSString *timeString = [timeFormat stringFromDate:dive.date];
-    
-    _diveDateLabel.text = dateString;
-    _diveTimeLabel.text = timeString;
+    _diveDateLabel.text = [dive getDateString];
+    _diveTimeLabel.text = [dive getTimeString];
     
     [UIView animateWithDuration:0.5f animations:^{
         self.cloudImageView.alpha = dive.uploaded.boolValue ? 0.6f : 0.0f;

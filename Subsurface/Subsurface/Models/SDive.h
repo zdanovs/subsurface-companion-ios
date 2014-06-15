@@ -18,4 +18,7 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSNumber *uploaded;
 
+- (NSString *)getDateString;
+- (NSString *)getTimeString;
+
 @end

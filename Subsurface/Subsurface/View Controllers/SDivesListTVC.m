@@ -233,6 +233,10 @@
 
 #pragma mark - Preparing Segues
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return !self.tableView.editing;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"LoadDiveDetails"]) {
         SDiveTableCell *cell = (SDiveTableCell *)sender;

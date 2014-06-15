@@ -176,6 +176,7 @@ Enter your </string>
                                     <outlet property="diveDateLabel" destination="ovT-CN-GeM" id="MkL-49-Be5"/>
                                     <outlet property="diveNameLabel" destination="apu-vA-02I" id="mab-pL-XEZ"/>
                                     <outlet property="diveTimeLabel" destination="Jhe-2u-OUR" id="kPn-Zx-7sf"/>
+                                    <segue destination="9Wd-R8-ozb" kind="push" identifier="LoadDiveDetails" id="a1t-GZ-fD0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -210,6 +211,25 @@ Enter your </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5Q-vU-Auy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="977" y="61"/>
+        </scene>
+        <!--Dive DetailsVC-->
+        <scene sceneID="qCD-xT-IHv">
+            <objects>
+                <viewController id="9Wd-R8-ozb" customClass="SDiveDetailsVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gt7-n2-x9S"/>
+                        <viewControllerLayoutGuide type="bottom" id="WYd-bg-Zc0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a1L-vE-jMh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="IAv-19-GU2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jkk-q4-yRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1444" y="61"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Stc-jq-qtR">

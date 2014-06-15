@@ -21,6 +21,8 @@
 @implementation SDiveTableCell
 
 - (void)setupDiveCell:(SDive *)dive {
+    self.dive = dive;
+    
     _diveNameLabel.text = dive.name;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

@@ -12,6 +12,8 @@
 
 @interface SDiveTableCell : UITableViewCell
 
+@property SDive *dive;
+
 - (void)setupDiveCell:(SDive *)dive;
 
 @end

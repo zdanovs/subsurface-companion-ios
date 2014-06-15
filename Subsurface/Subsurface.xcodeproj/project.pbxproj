@@ -22,6 +22,7 @@
 		7C08908C192A9A36007307FB /* SubsurfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C08908B192A9A36007307FB /* SubsurfaceTests.m */; };
 		7C26B8E11930B391008C90E8 /* SDivesListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C26B8E01930B391008C90E8 /* SDivesListTVC.m */; };
 		7C26B8E41930C358008C90E8 /* SDiveTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C26B8E31930C358008C90E8 /* SDiveTableCell.m */; };
+		7C2FDC02194D94DF00F0B076 /* SDiveDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2FDC01194D94DF00F0B076 /* SDiveDetailsVC.m */; };
 		7CD22853192D3E6D004D3A21 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C08906F192A9A36007307FB /* Main_iPhone.storyboard */; };
 		7CD22854192D3E6D004D3A21 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C089072192A9A36007307FB /* Main_iPad.storyboard */; };
 		7CD2285C192D41DF004D3A21 /* SWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2285B192D41DF004D3A21 /* SWebService.m */; };
@@ -66,6 +67,8 @@
 		7C26B8E01930B391008C90E8 /* SDivesListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDivesListTVC.m; sourceTree = "<group>"; };
 		7C26B8E21930C358008C90E8 /* SDiveTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiveTableCell.h; sourceTree = "<group>"; };
 		7C26B8E31930C358008C90E8 /* SDiveTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDiveTableCell.m; sourceTree = "<group>"; };
+		7C2FDC00194D94DF00F0B076 /* SDiveDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiveDetailsVC.h; sourceTree = "<group>"; };
+		7C2FDC01194D94DF00F0B076 /* SDiveDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDiveDetailsVC.m; sourceTree = "<group>"; };
 		7C8FE7C5192D253B00C5B1D6 /* Subsurface-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Subsurface-Info.plist"; path = "Supporting Files/Subsurface-Info.plist"; sourceTree = "<group>"; };
 		7C8FE7C6192D253B00C5B1D6 /* Subsurface-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Subsurface-Prefix.pch"; path = "Supporting Files/Subsurface-Prefix.pch"; sourceTree = "<group>"; };
 		7CD22856192D3EA0004D3A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				7C089076192A9A36007307FB /* SWelcomeVC.m */,
 				7C26B8DF1930B391008C90E8 /* SDivesListTVC.h */,
 				7C26B8E01930B391008C90E8 /* SDivesListTVC.m */,
+				7C2FDC00194D94DF00F0B076 /* SDiveDetailsVC.h */,
+				7C2FDC01194D94DF00F0B076 /* SDiveDetailsVC.m */,
 				7C26B8E51930C363008C90E8 /* Cells */,
 			);
 			path = "View Controllers";
@@ -339,6 +344,7 @@
 				7CD8E0AC193B3D5D006F0778 /* SCoreDataStore.m in Sources */,
 				7CD8E0A2193B2234006F0778 /* SCoreService.m in Sources */,
 				7C26B8E11930B391008C90E8 /* SDivesListTVC.m in Sources */,
+				7C2FDC02194D94DF00F0B076 /* SDiveDetailsVC.m in Sources */,
 				7CD8E0A6193B26E0006F0778 /* SCoreDiveService.m in Sources */,
 				7C089077192A9A36007307FB /* SWelcomeVC.m in Sources */,
 				7CD2285C192D41DF004D3A21 /* SWebService.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "SDivesListTVC.h"
 #import "SDiveTableCell.h"
+#import "SDiveDetailsVC.h"
 #import "SCoreDiveService.h"
 
 #define kCellHeight    54.0f
@@ -158,6 +159,7 @@
         [SWEB uploadDive:dive];
     }
     
+    [self.tableView setEditing:NO animated:YES];
     [self.tableView reloadData];
 }
 
@@ -173,6 +175,7 @@
     }
     
     [self.tableView deleteRowsAtIndexPaths:[self.tableView indexPathsForSelectedRows] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView setEditing:NO animated:YES];
 }
 
 - (void)addNewDiveAction {
@@ -226,6 +229,17 @@
     }
     
     return [self.divesList objectsAtIndexes:selectedIndexSet];
+}
+
+#pragma mark - Preparing Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"LoadDiveDetails"]) {
+        SDiveTableCell *cell = (SDiveTableCell *)sender;
+        
+        SDiveDetailsVC *vc = [segue destinationViewController];
+        vc.dive = cell.dive;
+    }
 }
 
 @end

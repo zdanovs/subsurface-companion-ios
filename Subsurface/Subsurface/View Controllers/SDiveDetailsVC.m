@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *diveNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *diveTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveLatitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveLongitudeLabel;
 
@@ -32,11 +33,8 @@
     self.viewsToToggle = @[self.diveNameLabel, self.diveDateLabel, self.diveLatitudeLabel, self.diveLongitudeLabel];
     
     self.diveNameLabel.text = self.dive.name;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *dateString = [dateFormat stringFromDate:self.dive.date];
-    self.diveDateLabel.text = dateString;
+    self.diveDateLabel.text = [self.dive getDateString];
+    self.diveTimeLabel.text = [self.dive getTimeString];
     
     self.diveLatitudeLabel.text = [NSString stringWithFormat:@"%@", self.dive.latitude];
     self.diveLongitudeLabel.text = [NSString stringWithFormat:@"%@", self.dive.longitude];

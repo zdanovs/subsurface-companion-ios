@@ -14,6 +14,7 @@
 
 @interface SDiveDetailsVC ()
 
+@property (weak, nonatomic) IBOutlet UIView *diveInfoContainer;
 @property (weak, nonatomic) IBOutlet UILabel *diveNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveTimeLabel;
@@ -44,7 +45,7 @@
     self.diveLatitudeLabel.text = [NSString stringWithFormat:@"%@", self.dive.latitude];
     self.diveLongitudeLabel.text = [NSString stringWithFormat:@"%@", self.dive.longitude];
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(animateMapAppear)];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMap)];
     [self.tapAnimationView addGestureRecognizer:tapRecognizer];
     
     [self adjustMapAppear];
@@ -70,33 +71,38 @@
     [self.mapView setCenterCoordinate:coordinate animated:YES];
 }
 
-- (void)animateMapAppear {
+- (void)showMap {
+    [self animateMapAppear:YES];
+}
+
+- (void)closeMap {
+    [self animateMapAppear:NO];
+}
+
+- (void)animateMapAppear:(BOOL)show {
+    UIBarButtonItem *closeMapButton = [[UIBarButtonItem alloc] initWithTitle:@"Close Map"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self
+                                                                      action:@selector(closeMap)];
+    [self.navigationItem setRightBarButtonItem:show ? closeMapButton : self.editButtonItem animated:YES];
+    
     [UIView animateWithDuration:1.0f
                      animations:^{
-                         self.circleBackgroundImageView.transform = CGAffineTransformMakeScale(kScaleFactor, kScaleFactor);
-                         self.circleBackgroundImageView.center = CGPointMake(kCircleRadius * kScaleFactor / 2, -kCircleRadius * kScaleFactor);
+                         CGFloat scaleFactor = show ? kScaleFactor : 1.0f;
+                         self.diveInfoContainer.alpha = show ? 0.0f : 1.0f;
+                         self.circleBackgroundImageView.transform = CGAffineTransformMakeScale(scaleFactor, scaleFactor);
                          
-                         for (UIView *view in self.viewsToToggle) {
-                             view.alpha = 0.0f;
-                         }
+                         CGPoint scalePoint = show ? CGPointMake(kCircleRadius * scaleFactor / 2, -kCircleRadius * scaleFactor) : CGPointMake(160, 316);
+                         self.circleBackgroundImageView.center = scalePoint;
                      } completion:^(BOOL finished){
-                         for (UIView *view in self.viewsToToggle) {
-                             view.hidden = YES;
-                         }
-                         
-                         self.circleBackgroundImageView.hidden = YES;
-                         self.tapAnimationView.hidden = YES;
+                         self.tapAnimationView.hidden = show;
                      }];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
-//    self.tableView.allowsMultipleSelectionDuringEditing = editing;
-//    [self.tableView reloadData];
-//    
-//    [self.navigationController setToolbarHidden:!editing animated:YES];
-//    [self updateBottomToolbarButtonsState];
+    
 }
 
 @end

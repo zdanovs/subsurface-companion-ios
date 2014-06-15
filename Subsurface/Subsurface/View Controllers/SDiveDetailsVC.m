@@ -9,6 +9,9 @@
 #import "SDiveDetailsVC.h"
 #import "SDive.h"
 
+#define kScaleFactor    7
+#define kCircleRadius   50
+
 @interface SDiveDetailsVC ()
 
 @property (weak, nonatomic) IBOutlet UILabel *diveNameLabel;
@@ -29,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.viewsToToggle = @[self.diveNameLabel, self.diveDateLabel, self.diveLatitudeLabel, self.diveLongitudeLabel];
     
@@ -68,8 +73,8 @@
 - (void)animateMapAppear {
     [UIView animateWithDuration:1.0f
                      animations:^{
-                         self.circleBackgroundImageView.transform = CGAffineTransformMakeScale(7, 7);
-                         self.circleBackgroundImageView.center = CGPointMake(50*7/2, -50*7);
+                         self.circleBackgroundImageView.transform = CGAffineTransformMakeScale(kScaleFactor, kScaleFactor);
+                         self.circleBackgroundImageView.center = CGPointMake(kCircleRadius * kScaleFactor / 2, -kCircleRadius * kScaleFactor);
                          
                          for (UIView *view in self.viewsToToggle) {
                              view.alpha = 0.0f;
@@ -82,6 +87,16 @@
                          self.circleBackgroundImageView.hidden = YES;
                          self.tapAnimationView.hidden = YES;
                      }];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+//    self.tableView.allowsMultipleSelectionDuringEditing = editing;
+//    [self.tableView reloadData];
+//    
+//    [self.navigationController setToolbarHidden:!editing animated:YES];
+//    [self updateBottomToolbarButtonsState];
 }
 
 @end

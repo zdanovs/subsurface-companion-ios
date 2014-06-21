@@ -53,6 +53,8 @@
     
     self.navigationController.navigationBarHidden = NO;
     self.tableView.contentOffset = CGPointMake(0, kHeaderHeight);
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

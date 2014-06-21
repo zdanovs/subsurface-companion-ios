@@ -104,6 +104,7 @@ static SWebService *_staticWebService = nil;
              }
              
              [SDIVE storeDives:updatedDives];
+             [SDIVE saveState];
              
              [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:updatedDives];
          }
@@ -178,7 +179,7 @@ static SWebService *_staticWebService = nil;
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     
-                               [diveInfo setObject:[NSNumber numberWithBool:NO] forKey:@"uploaded"];
+                               [diveInfo setObject:[NSNumber numberWithBool:(connectionError == nil)] forKey:@"uploaded"];
                                [SDIVE storeDives:@[diveInfo]];
     
                            }];

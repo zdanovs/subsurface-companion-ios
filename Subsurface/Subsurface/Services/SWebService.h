@@ -23,8 +23,8 @@
 #pragma mark - Service API
 - (void)retrieveAccount:(NSString *)email;
 - (void)getDivesList:(NSString *)userID;
-- (void)deleteDive:(SDive *)dive;
-- (void)uploadDive:(SDive *)dive;
+- (void)deleteDive:(SDive *)dive fully:(BOOL)fully;
+- (void)uploadDive:(SDive *)dive fully:(BOOL)fully;
 - (void)addDive:(NSString *)diveName;
 
 @end

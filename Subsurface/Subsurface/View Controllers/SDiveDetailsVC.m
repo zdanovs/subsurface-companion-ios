@@ -7,6 +7,8 @@
 //
 
 #import "SDiveDetailsVC.h"
+#import "SCoreDiveService.h"
+#import "SWebService.h"
 #import "SDive.h"
 
 #define kScaleFactor    7
@@ -33,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *circleBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *tapAnimationView;
 
-@property NSArray *viewsToToggle;
+@property NSSet *initialState;
 
 @end
 
@@ -42,9 +44,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self customBackButton];
+    
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.viewsToToggle = @[self.diveNameLabel, self.diveDateLabel, self.diveLatitudeLabel, self.diveLongitudeLabel];
+    self.initialState =  [NSSet setWithArray:@[self.dive.name, self.dive.date, self.dive.latitude, self.dive.longitude]];
     
     self.diveNameLabel.text = self.dive.name;
     self.diveDateLabel.text = [self.dive getDateString];
@@ -111,6 +115,76 @@
                      } completion:^(BOOL finished){
                          self.tapAnimationView.hidden = show;
                      }];
+}
+
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
+    [self checkChangesInFields];
+    
+    return NO;
+}
+
+- (void)customBackButton {
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [leftButton addTarget:self action:@selector(checkChangesInFields) forControlEvents:UIControlEventTouchUpInside];
+    [leftButton setImage:[UIImage imageNamed:@"icon-back.png"] forState:UIControlStateNormal];
+    [leftButton setTitle:NSLocalizedString(@"Dives List", @"") forState:UIControlStateNormal];
+    leftButton.tintColor = [UIColor colorWithRed:0 green:0.478431 blue:1.0 alpha:1.0];
+    
+    UIView *leftButtonView = [[UIView alloc]initWithFrame:CGRectMake(-13, 0, 100, 50)];
+    leftButton.frame = leftButtonView.frame;
+    [leftButtonView addSubview:leftButton];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftButtonView];
+}
+
+- (void)checkChangesInFields {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setLocale:[NSLocale currentLocale]];
+    
+    NSString *newDiveName = self.editableNameLabel.text;
+    NSNumber *newLatitude = [NSNumber numberWithFloat:self.editableLatitudeLabel.text.floatValue];
+    NSNumber *newLongitude = [NSNumber numberWithFloat:self.editableLongitudeLabel.text.floatValue];
+    NSDate *newDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", self.editableDateLabel.text, self.editableTimeLabel.text]];
+    
+    NSSet *newState = [NSSet setWithArray:@[newDiveName, newDate, newLatitude, newLongitude]];
+    BOOL equal = [self.initialState isEqualToSet:newState];
+    
+    if (!equal) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Save changes?", "")
+                                                            message:NSLocalizedString(@"You have edited dive data", "")
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Discard", "")
+                                                  otherButtonTitles:NSLocalizedString(@"Save", ""), nil];
+        [alertView show];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        [dateFormatter setLocale:[NSLocale currentLocale]];
+        
+        NSString *newDiveName = self.editableNameLabel.text;
+        NSNumber *newLatitude = [NSNumber numberWithFloat:self.editableLatitudeLabel.text.floatValue];
+        NSNumber *newLongitude = [NSNumber numberWithFloat:self.editableLongitudeLabel.text.floatValue];
+        NSDate *newDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", self.editableDateLabel.text, self.editableTimeLabel.text]];
+        
+        [SWEB deleteDive:self.dive fully:NO];
+        
+        self.dive.name = newDiveName;
+        self.dive.date = newDate;
+        self.dive.latitude = newLatitude;
+        self.dive.longitude = newLongitude;
+        [SDIVE saveState];
+        
+        [SWEB uploadDive:self.dive fully:NO];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {

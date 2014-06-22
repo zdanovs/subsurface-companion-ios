@@ -90,7 +90,7 @@
         _divesList = [NSArray arrayWithArray:mutableDivesList];
         [self.tableView reloadData];
         
-        [SWEB deleteDive:dive];
+        [SWEB deleteDive:dive fully:YES];
     }
 }
 
@@ -158,7 +158,7 @@
     NSArray *selectedDives = [self getSelectedDives];
     
     for (SDive *dive in selectedDives) {
-        [SWEB uploadDive:dive];
+        [SWEB uploadDive:dive fully:YES];
     }
     
     [self.tableView setEditing:NO animated:YES];
@@ -173,7 +173,7 @@
     self.divesList = mutableDivesList.copy;
     
     for (SDive *dive in selectedDives) {
-        [SWEB deleteDive:dive];
+        [SWEB deleteDive:dive fully:YES];
     }
     
     [self.tableView deleteRowsAtIndexPaths:[self.tableView indexPathsForSelectedRows] withRowAnimation:UITableViewRowAnimationAutomatic];

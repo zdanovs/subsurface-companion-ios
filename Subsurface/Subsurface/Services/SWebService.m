@@ -111,7 +111,7 @@ static SWebService *_staticWebService = nil;
      }];
 }
 
-- (void)deleteDive:(SDive *)dive {
+- (void)deleteDive:(SDive *)dive fully:(BOOL)fully {
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -132,13 +132,15 @@ static SWebService *_staticWebService = nil;
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                            
-                               [SDIVE removeDive:dive];
-                               [SDIVE saveState];
+                               if (fully) {
+                                   [SDIVE removeDive:dive];
+                                   [SDIVE saveState];
+                               }
                                
                            }];
 }
 
-- (void)uploadDive:(SDive *)dive {
+- (void)uploadDive:(SDive *)dive fully:(BOOL)fully {
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -159,8 +161,10 @@ static SWebService *_staticWebService = nil;
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                
-                               dive.uploaded = [NSNumber numberWithBool:(connectionError == nil)];
-                               [SDIVE saveState];
+                               if (fully) {
+                                   dive.uploaded = [NSNumber numberWithBool:(connectionError == nil)];
+                                   [SDIVE saveState];
+                               }
                                
                            }];
 }

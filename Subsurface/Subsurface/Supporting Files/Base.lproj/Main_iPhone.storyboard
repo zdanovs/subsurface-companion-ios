@@ -334,6 +334,9 @@ Enter your </string>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Z1A-Cr-HWG" userLabel="mapView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9Wd-R8-ozb" id="U1E-On-YiZ"/>
+                                </connections>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dive-details-map-circle" id="OlJ-Nj-AiV" userLabel="circleBackgroundImageView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>

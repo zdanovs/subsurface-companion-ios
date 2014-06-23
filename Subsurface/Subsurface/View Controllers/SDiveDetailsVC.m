@@ -84,6 +84,10 @@
     annotation.subtitle = self.diveDateLabel.text;
     [self.mapView addAnnotation:annotation];
     
+    [self adjustPinPosition];
+}
+
+- (void)adjustPinPosition {
     // Show location in center of screen
     MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
     MKCoordinateRegion region = {self.coordinate, span};
@@ -120,6 +124,10 @@
                          self.circleBackgroundImageView.center = scalePoint;
                      } completion:^(BOOL finished){
                          self.tapAnimationView.hidden = show;
+                         
+                         if (!show) {
+                             [self adjustPinPosition];
+                         }
                      }];
 }
 
@@ -175,8 +183,8 @@
         [dateFormatter setLocale:[NSLocale currentLocale]];
         
         NSString *newDiveName = self.editableNameLabel.text;
-        NSNumber *newLatitude = [NSNumber numberWithFloat:self.editableLatitudeLabel.text.floatValue];
-        NSNumber *newLongitude = [NSNumber numberWithFloat:self.editableLongitudeLabel.text.floatValue];
+        NSNumber *newLatitude = [NSNumber numberWithFloat:self.coordinate.latitude];
+        NSNumber *newLongitude = [NSNumber numberWithFloat:self.coordinate.longitude];
         NSDate *newDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", self.editableDateLabel.text, self.editableTimeLabel.text]];
         
         [SWEB deleteDive:self.dive fully:NO];
@@ -221,6 +229,33 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
     [self setEditing:NO animated:YES];
+}
+
+#pragma mark - MKMapViewDelegate methods
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    static NSString *reuseId = @"pin";
+    MKPinAnnotationView *pav = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+    if (pav == nil) {
+        pav = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+        pav.draggable = YES;
+        pav.canShowCallout = YES;
+    } else {
+        pav.annotation = annotation;
+    }
+    
+    return pav;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+    
+    if (newState == MKAnnotationViewDragStateEnding) {
+        self.coordinate = annotationView.annotation.coordinate;
+    }
 }
 
 @end

@@ -104,23 +104,15 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIToolbar *bkgToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeaderHeight)];
-
-    UIButton *addDiveButton = [[UIButton alloc] initWithFrame:bkgToolbar.frame];
+    UIButton *addDiveButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeaderHeight)];
+    addDiveButton.showsTouchWhenHighlighted = YES;
+    addDiveButton.backgroundColor = [UIColor whiteColor];
     addDiveButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     [addDiveButton setTitle:NSLocalizedString(@"Add Dive", @"") forState:UIControlStateNormal];
     [addDiveButton addTarget:self action:@selector(addNewDiveAction) forControlEvents:UIControlEventTouchUpInside];
-    [addDiveButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+    [addDiveButton setTitleColor:[UIColor colorWithRed:0 green:122/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
     
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeaderHeight - 1, self.tableView.frame.size.width, 1)];
-    separatorView.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1.0];
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:bkgToolbar.frame];
-    [headerView addSubview:bkgToolbar];
-    [headerView addSubview:addDiveButton];
-    [headerView addSubview:separatorView];
-    
-    return headerView;
+    return addDiveButton;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

@@ -255,6 +255,11 @@
     
     if (newState == MKAnnotationViewDragStateEnding) {
         self.coordinate = annotationView.annotation.coordinate;
+        
+        self.diveLatitudeLabel.text = [NSString stringWithFormat:@"%f", self.coordinate.latitude];
+        self.diveLongitudeLabel.text = [NSString stringWithFormat:@"%f", self.coordinate.longitude];
+        self.editableLatitudeLabel.text = self.diveLatitudeLabel.text;
+        self.editableLongitudeLabel.text = self.diveLongitudeLabel.text;
     }
 }
 

@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *circleBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *tapAnimationView;
 
+@property CLLocationCoordinate2D coordinate;
 @property NSSet *initialState;
 
 @end
@@ -65,28 +66,33 @@
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMap)];
     [self.tapAnimationView addGestureRecognizer:tapRecognizer];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     [self adjustMapAppear];
 }
 
 - (void)adjustMapAppear {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.dive.latitude.floatValue, self.dive.longitude.floatValue);
+    self.coordinate = CLLocationCoordinate2DMake(self.dive.latitude.floatValue, self.dive.longitude.floatValue);
     
     // Add pin to map
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    annotation.coordinate = coordinate;
+    annotation.coordinate = self.coordinate;
     annotation.title = self.dive.name;
     annotation.subtitle = self.diveDateLabel.text;
     [self.mapView addAnnotation:annotation];
     
     // Show location in center of screen
     MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
-    MKCoordinateRegion region = {coordinate, span};
+    MKCoordinateRegion region = {self.coordinate, span};
     [self.mapView setRegion:region];
     
     // Move map to fit in circle
-    coordinate.latitude += self.mapView.region.span.latitudeDelta * 0.22;
-    [self.mapView setCenterCoordinate:coordinate animated:YES];
+    CLLocationCoordinate2D moveCoord = self.coordinate;
+    moveCoord.latitude += self.mapView.region.span.latitudeDelta * 0.22;
+    [self.mapView setCenterCoordinate:moveCoord animated:YES];
 }
 
 - (void)showMap {
@@ -143,8 +149,8 @@
     [dateFormatter setLocale:[NSLocale currentLocale]];
     
     NSString *newDiveName = self.editableNameLabel.text;
-    NSNumber *newLatitude = [NSNumber numberWithFloat:self.editableLatitudeLabel.text.floatValue];
-    NSNumber *newLongitude = [NSNumber numberWithFloat:self.editableLongitudeLabel.text.floatValue];
+    NSNumber *newLatitude = [NSNumber numberWithFloat:self.coordinate.latitude];
+    NSNumber *newLongitude = [NSNumber numberWithFloat:self.coordinate.longitude];
     NSDate *newDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", self.editableDateLabel.text, self.editableTimeLabel.text]];
     
     NSSet *newState = [NSSet setWithArray:@[newDiveName, newDate, newLatitude, newLongitude]];

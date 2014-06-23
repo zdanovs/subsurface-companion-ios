@@ -9,7 +9,8 @@
 #import "SWebService.h"
 #import "SCoreDiveService.h"
 
-#define kServerAddress  @"http://api.hohndel.org/api"
+#define kServerAddress  [SWebService apiServerAddress]
+#define kAutoUpload     [SWebService shouldAutoUpload]
 
 @interface SWebService ()
 @property NSString *diveNewName;
@@ -18,6 +19,8 @@
 @implementation SWebService
 
 static SWebService *_staticWebService = nil;
+static NSString *_staticApiAddress = nil;
+static BOOL _autoUpload;
 
 #pragma mark - Shared instance
 + (SWebService *)sharedWebService {
@@ -28,6 +31,28 @@ static SWebService *_staticWebService = nil;
     });
     
     return _staticWebService;
+}
+
++ (NSString *)apiServerAddress {
+    static dispatch_once_t sharedApiAddressTag = 0;
+    
+    dispatch_once(&sharedApiAddressTag, ^{
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        _staticApiAddress = [userDefaults objectForKey:kPreferencesApiKey];
+    });
+    
+    return _staticApiAddress;
+}
+
++ (BOOL)shouldAutoUpload {
+    static dispatch_once_t sharedUploadTag = 0;
+    
+    dispatch_once(&sharedUploadTag, ^{
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        _autoUpload = [[userDefaults objectForKey:kPreferencesUploadKey] boolValue];
+    });
+    
+    return _autoUpload;
 }
 
 - (void)retrieveAccount:(NSString *)email {

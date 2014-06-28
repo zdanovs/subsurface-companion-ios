@@ -99,6 +99,23 @@ static BOOL _autoUpload;
      }];
 }
 
+- (void)deleteAccount:(NSString *)userID withEmail:(NSString *)userEmail {
+    NSString *bodyString = [NSString stringWithFormat:@"login=%@&email=%@", userID, userEmail];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/user/delete/", kServerAddress]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = [bodyString dataUsingEncoding:NSASCIIStringEncoding];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               
+                               [[NSNotificationCenter defaultCenter] postNotificationName:kDeletedAccountNotification object:userEmail];
+                               
+                           }];
+}
+
 - (void)informUser:(NSArray *)information {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:information[0]
                                                         message:information[1]

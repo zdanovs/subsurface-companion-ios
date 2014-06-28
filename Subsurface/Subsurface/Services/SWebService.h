@@ -22,6 +22,8 @@
 
 #pragma mark - Service API
 - (void)retrieveAccount:(NSString *)email;
+- (void)deleteAccount:(NSString *)userID withEmail:(NSString *)userEmail;
+
 - (void)getDivesList:(NSString *)userID;
 - (void)deleteDive:(SDive *)dive fully:(BOOL)fully;
 - (void)uploadDive:(SDive *)dive fully:(BOOL)fully;

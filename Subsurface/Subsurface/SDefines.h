@@ -10,7 +10,8 @@
 
 #define kDivesListLoadNotification          @"DivesListIsLoaded"
 #define kCreatedAccountNotification         @"NewlyCreatedAccountID"
-#define kLocationServiceStartNotification   @"startLocationService"
+#define kDeletedAccountNotification         @"AccountDeleted"
+#define kLocationServiceStartNotification   @"StartLocationService"
 
 #define kPreferencesApiKey          @"preferences_apiUrl"
 #define kPreferencesSyncKey         @"preferences_synchOnStartUp"

@@ -130,8 +130,6 @@ static BOOL _autoUpload;
              
              [SDIVE storeDives:updatedDives];
              [SDIVE saveState];
-             
-             [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:updatedDives];
          }
      }];
 }

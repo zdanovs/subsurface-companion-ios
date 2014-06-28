@@ -61,6 +61,8 @@ static SCoreDiveService *_staticDiveService = nil;
         
         dive.date = convertedDate;
         dive.uploaded = diveData[@"uploaded"];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:@[dive]];
     }
 }
 

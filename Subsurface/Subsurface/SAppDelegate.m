@@ -8,11 +8,24 @@
 
 #import "SAppDelegate.h"
 
+#define kAnimationOpacityKey    @"animateOpacity"
+
+@interface SAppDelegate () <CLLocationManagerDelegate>
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
+@property UIWindow  *primaryWindow;
+@property UIWindow  *notificationWindow;
+@property UIView    *notificationView;
+
+@end
+
 @implementation SAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self registerDefaultsFromSettingsBundle];
+    [self createLocationServiceView];
     
     return YES;
 }
@@ -41,6 +54,74 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Additional methods
+
+- (void)createLocationServiceView {
+    self.primaryWindow = [[UIApplication sharedApplication] keyWindow];
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    CGFloat viewHeight = 50.0f;
+    
+    UILabel *notificationLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, screenWidth - viewHeight - 15, viewHeight)];
+    notificationLabel.text = NSLocalizedString(@"Location Service is working", @"");
+    notificationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    notificationLabel.textColor = [UIColor whiteColor];
+    
+    UIButton *stopLocationServiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    stopLocationServiceButton.tintColor = [UIColor whiteColor];
+    stopLocationServiceButton.frame = CGRectMake(screenWidth - viewHeight, 0, viewHeight, viewHeight);
+    [stopLocationServiceButton setImage:[UIImage imageNamed:@"icon-stop.png"] forState:UIControlStateNormal];
+    [stopLocationServiceButton addTarget:self action:@selector(stopLocationService) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, viewHeight)];
+    self.notificationView.backgroundColor = [UIColor redColor];
+    self.notificationView.alpha = 0.0f;
+    [self.notificationView addSubview:notificationLabel];
+    
+    self.notificationWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, screenHeight - viewHeight, 320, viewHeight)];
+    self.notificationWindow.backgroundColor = [UIColor clearColor];
+    self.notificationWindow.windowLevel = UIWindowLevelStatusBar;
+    [self.notificationWindow addSubview:self.notificationView];
+    [self.notificationWindow addSubview:stopLocationServiceButton];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = [[[NSUserDefaults standardUserDefaults] objectForKey:kPreferencesDistanceKey] floatValue];
+    self.locationManager.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(startLocationService)
+                                                 name:kLocationServiceStartNotification
+                                               object:nil];
+}
+
+- (void)startLocationService {
+    [self.locationManager startUpdatingLocation];
+    
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    pulseAnimation.duration = 1.0;
+    pulseAnimation.repeatCount = HUGE_VALF;
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.fromValue = [NSNumber numberWithFloat:0.8];
+    pulseAnimation.toValue = [NSNumber numberWithFloat:0.2];
+    [self.notificationView.layer addAnimation:pulseAnimation forKey:kAnimationOpacityKey];
+    
+    [self.notificationWindow makeKeyAndVisible];
+}
+
+- (void)stopLocationService {
+    [self.locationManager stopUpdatingLocation];
+    
+    [self.notificationView.layer removeAnimationForKey:kAnimationOpacityKey];
+    self.notificationWindow.alpha = 0.0f;
+    [self.primaryWindow makeKeyAndVisible];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    NSString *defaultName = [[NSUserDefaults standardUserDefaults] objectForKey:kPreferencesDefaultNameKey];
+    [SWEB addDive:defaultName];
 }
 
 - (void)registerDefaultsFromSettingsBundle {

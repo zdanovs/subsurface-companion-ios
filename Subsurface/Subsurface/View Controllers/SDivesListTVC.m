@@ -11,8 +11,11 @@
 #import "SDiveDetailsVC.h"
 #import "SCoreDiveService.h"
 
-#define kCellHeight    54.0f
-#define kHeaderHeight    45.0f
+#define kCellHeight     54.0f
+#define kHeaderHeight   45.0f
+
+#define kChooseDiveOptionAlertTag   1
+#define kAddNewDiveAlertTag         2
 
 @interface SDivesListTVC ()
 
@@ -109,7 +112,7 @@
     addDiveButton.backgroundColor = [UIColor whiteColor];
     addDiveButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     [addDiveButton setTitle:NSLocalizedString(@"Add Dive", @"") forState:UIControlStateNormal];
-    [addDiveButton addTarget:self action:@selector(addNewDiveAction) forControlEvents:UIControlEventTouchUpInside];
+    [addDiveButton addTarget:self action:@selector(chooseNewDiveOption) forControlEvents:UIControlEventTouchUpInside];
     [addDiveButton setTitleColor:[UIColor colorWithRed:0 green:122/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
     
     return addDiveButton;
@@ -172,12 +175,23 @@
     [self.tableView setEditing:NO animated:YES];
 }
 
+- (void)chooseNewDiveOption {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Add new dive", "")
+                                                        message:NSLocalizedString(@"How would you like to add new dive(s)?", "")
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"Cancel", "")
+                                              otherButtonTitles:NSLocalizedString(@"Manual", ""), NSLocalizedString(@"Auto", ""), nil];
+    alertView.tag = kChooseDiveOptionAlertTag;
+    [alertView show];
+}
+
 - (void)addNewDiveAction {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enter dive name", "")
                                                         message:@""
                                                        delegate:self
                                               cancelButtonTitle:NSLocalizedString(@"Cancel", "")
                                               otherButtonTitles:NSLocalizedString(@"Add", ""), nil];
+    alertView.tag = kAddNewDiveAlertTag;
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     
     UITextField *textField = [alertView textFieldAtIndex:0];
@@ -190,10 +204,18 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        UITextField *alertTextField = [alertView textFieldAtIndex:0];
-        
-        [SWEB addDive:alertTextField.text];
+    if (alertView.tag == kChooseDiveOptionAlertTag) {
+        if (buttonIndex == 1) {
+            [self addNewDiveAction];
+        } else if (buttonIndex == 2) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLocationServiceStartNotification object:nil];
+        }
+    }
+    else if (alertView.tag == kAddNewDiveAlertTag) {
+        if (buttonIndex == 1) {
+            UITextField *alertTextField = [alertView textFieldAtIndex:0];
+            [SWEB addDive:alertTextField.text];
+        }
     }
 }
 

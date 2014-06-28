@@ -8,8 +8,9 @@
 
 #define kUserIdKey  @"userID"
 
-#define kCreatedAccountNotification @"NewlyCreatedAccountID"
-#define kDivesListLoadNotification  @"DivesListIsLoaded"
+#define kDivesListLoadNotification          @"DivesListIsLoaded"
+#define kCreatedAccountNotification         @"NewlyCreatedAccountID"
+#define kLocationServiceStartNotification   @"startLocationService"
 
 #define kPreferencesApiKey          @"preferences_apiUrl"
 #define kPreferencesSyncKey         @"preferences_synchOnStartUp"

@@ -27,6 +27,8 @@
 		7C5392561957421C009FBE44 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C5392551957421C009FBE44 /* Settings.bundle */; };
 		7C53925919578881009FBE44 /* SInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53925819578881009FBE44 /* SInfoVC.m */; };
 		7C53925B19578CCB009FBE44 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C53925A19578CCB009FBE44 /* MessageUI.framework */; };
+		7C70A244195C8E4E0075A7C4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C70A243195C8E4E0075A7C4 /* CoreData.framework */; };
+		7C70A246195C8E560075A7C4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C70A245195C8E560075A7C4 /* CoreLocation.framework */; };
 		7CD22853192D3E6D004D3A21 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C08906F192A9A36007307FB /* Main_iPhone.storyboard */; };
 		7CD22854192D3E6D004D3A21 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C089072192A9A36007307FB /* Main_iPad.storyboard */; };
 		7CD2285C192D41DF004D3A21 /* SWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2285B192D41DF004D3A21 /* SWebService.m */; };
@@ -78,6 +80,8 @@
 		7C53925719578881009FBE44 /* SInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInfoVC.h; sourceTree = "<group>"; };
 		7C53925819578881009FBE44 /* SInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SInfoVC.m; sourceTree = "<group>"; };
 		7C53925A19578CCB009FBE44 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		7C70A243195C8E4E0075A7C4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7C70A245195C8E560075A7C4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7C8FE7C5192D253B00C5B1D6 /* Subsurface-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Subsurface-Info.plist"; path = "Supporting Files/Subsurface-Info.plist"; sourceTree = "<group>"; };
 		7C8FE7C6192D253B00C5B1D6 /* Subsurface-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Subsurface-Prefix.pch"; path = "Supporting Files/Subsurface-Prefix.pch"; sourceTree = "<group>"; };
 		7CD22856192D3EA0004D3A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
@@ -104,9 +108,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C089060192A9A36007307FB /* CoreGraphics.framework in Frameworks */,
+				7C70A246195C8E560075A7C4 /* CoreLocation.framework in Frameworks */,
+				7C70A244195C8E4E0075A7C4 /* CoreData.framework in Frameworks */,
 				7C53925B19578CCB009FBE44 /* MessageUI.framework in Frameworks */,
 				7C2FDC04194DA17300F0B076 /* MapKit.framework in Frameworks */,
-				7C089060192A9A36007307FB /* CoreGraphics.framework in Frameworks */,
 				7C089062192A9A36007307FB /* UIKit.framework in Frameworks */,
 				7C08905E192A9A36007307FB /* Foundation.framework in Frameworks */,
 			);
@@ -147,6 +153,8 @@
 		7C08905C192A9A36007307FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C70A245195C8E560075A7C4 /* CoreLocation.framework */,
+				7C70A243195C8E4E0075A7C4 /* CoreData.framework */,
 				7C53925A19578CCB009FBE44 /* MessageUI.framework */,
 				7C2FDC03194DA17300F0B076 /* MapKit.framework */,
 				7C08905D192A9A36007307FB /* Foundation.framework */,
@@ -305,6 +313,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Subsurface;
 				TargetAttributes = {
+					7C089059192A9A36007307FB = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					7C08907D192A9A36007307FB = {
 						TestTargetID = 7C089059192A9A36007307FB;
 					};

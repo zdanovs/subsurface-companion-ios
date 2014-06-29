@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *editableNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *editableDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *editableTimeLabel;
+@property (weak, nonatomic) IBOutlet UIView *coordinatesContainer;
 @property (weak, nonatomic) IBOutlet UITextField *editableLatitudeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *editableLongitudeLabel;
 
@@ -122,6 +123,10 @@
                          
                          CGPoint scalePoint = show ? CGPointMake(kCircleRadius * scaleFactor / 2, -kCircleRadius * scaleFactor) : CGPointMake(160, 316);
                          self.circleBackgroundImageView.center = scalePoint;
+                         
+                         CGRect frame = self.coordinatesContainer.frame;
+                         frame.origin.y = show ? 64 : 240;
+                         self.coordinatesContainer.frame = frame;
                      } completion:^(BOOL finished){
                          self.tapAnimationView.hidden = show;
                          

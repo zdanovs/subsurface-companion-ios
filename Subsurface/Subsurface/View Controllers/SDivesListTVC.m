@@ -112,7 +112,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIButton *addDiveButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeaderHeight)];
     addDiveButton.showsTouchWhenHighlighted = YES;
-    addDiveButton.backgroundColor = [UIColor whiteColor];
+    addDiveButton.backgroundColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.9];
     addDiveButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     [addDiveButton setTitle:NSLocalizedString(@"Add Dive", @"") forState:UIControlStateNormal];
     [addDiveButton addTarget:self action:@selector(chooseNewDiveOption) forControlEvents:UIControlEventTouchUpInside];

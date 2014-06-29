@@ -42,7 +42,7 @@
 			<key>Key</key>
 			<string>preferences_synchOnStartUp</string>
 			<key>Title</key>
-			<string>Synch on startup</string>
+			<string>Sync on startup</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>
@@ -78,7 +78,7 @@
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
 			<key>Title</key>
-			<string>Distance (meters)</string>
+			<string>Distance (m):  </string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>
@@ -96,7 +96,7 @@
 			<key>KeyboardType</key>
 			<string>Alphabet</string>
 			<key>Title</key>
-			<string>Dive Name</string>
+			<string>Default Name:</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>

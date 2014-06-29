@@ -44,6 +44,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [self registerDefaultsFromSettingsBundle];
+    [self startPulseAnimation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -98,17 +99,9 @@
 }
 
 - (void)startLocationService {
-    [self.locationManager startUpdatingLocation];
-    
-    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    pulseAnimation.duration = 1.0;
-    pulseAnimation.repeatCount = HUGE_VALF;
-    pulseAnimation.autoreverses = YES;
-    pulseAnimation.fromValue = [NSNumber numberWithFloat:0.8];
-    pulseAnimation.toValue = [NSNumber numberWithFloat:0.2];
-    [self.notificationView.layer addAnimation:pulseAnimation forKey:kAnimationOpacityKey];
-    
+    [self startPulseAnimation];
     [self.notificationWindow makeKeyAndVisible];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)stopLocationService {
@@ -117,6 +110,16 @@
     [self.notificationView.layer removeAnimationForKey:kAnimationOpacityKey];
     self.notificationWindow.alpha = 0.0f;
     [self.primaryWindow makeKeyAndVisible];
+}
+
+- (void)startPulseAnimation {
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    pulseAnimation.duration = 1.0;
+    pulseAnimation.repeatCount = HUGE_VALF;
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.fromValue = [NSNumber numberWithFloat:0.8];
+    pulseAnimation.toValue = [NSNumber numberWithFloat:0.2];
+    [self.notificationView.layer addAnimation:pulseAnimation forKey:kAnimationOpacityKey];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{

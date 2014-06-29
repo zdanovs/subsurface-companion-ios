@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *uploadDivesButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteDivesButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *allSelectDeselectButton;
 
 @property NSArray *divesList;
 @property NSArray *initialDivesList;
@@ -78,10 +79,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self updateBottomToolbarButtonsState];
+    [self updateSelectAllButton];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self updateBottomToolbarButtonsState];
+    [self updateSelectAllButton];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -175,6 +178,23 @@
     [self.tableView setEditing:NO animated:YES];
 }
 
+- (IBAction)allSelectDeselectButtonAction:(id)sender {
+    BOOL allDivesAreSelected = [self getSelectedDives].count == self.divesList.count;
+    
+    for (int i = 0; i < self.divesList.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        
+        if (allDivesAreSelected) {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        } else {
+            [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }
+    }
+    
+    [self updateBottomToolbarButtonsState];
+    [self updateSelectAllButton];
+}
+
 - (void)chooseNewDiveOption {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Add new dive", "")
                                                         message:NSLocalizedString(@"How would you like to add new dive(s)?", "")
@@ -234,6 +254,11 @@
 - (void)updateBottomToolbarButtonsState {
     self.uploadDivesButton.enabled = [self.tableView indexPathsForSelectedRows].count > 0;
     self.deleteDivesButton.enabled = [self.tableView indexPathsForSelectedRows].count > 0;
+}
+
+- (void)updateSelectAllButton {
+    BOOL allDivesAreSelected = [self getSelectedDives].count == self.divesList.count;
+    self.allSelectDeselectButton.title = allDivesAreSelected ? NSLocalizedString(@"Deselect All", "") : NSLocalizedString(@"Select All", "");
 }
 
 - (NSArray *)getSelectedDives {

@@ -336,6 +336,12 @@ Enter your </string>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4Zc-zL-HF6"/>
+                        <barButtonItem title="Select All" id="cqz-ZE-XIw">
+                            <connections>
+                                <action selector="allSelectDeselectButtonAction:" destination="E7k-QU-t3W" id="gFe-aq-rIz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="UBD-i9-VNi"/>
                         <barButtonItem style="plain" systemItem="trash" id="L9F-PU-btd">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -348,6 +354,7 @@ Enter your </string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="allSelectDeselectButton" destination="cqz-ZE-XIw" id="Gqg-Ou-eTy"/>
                         <outlet property="deleteDivesButton" destination="L9F-PU-btd" id="KOu-uF-brW"/>
                         <outlet property="uploadDivesButton" destination="K4w-8t-jcJ" id="89Z-vA-Gog"/>
                     </connections>

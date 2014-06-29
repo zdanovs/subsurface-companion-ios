@@ -89,8 +89,9 @@
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.distanceFilter = [[[NSUserDefaults standardUserDefaults] objectForKey:kPreferencesDistanceKey] floatValue];
+    self.locationManager.pausesLocationUpdatesAutomatically = NO;
     self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = [[[NSUserDefaults standardUserDefaults] objectForKey:kPreferencesDistanceKey] floatValue];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(startLocationService)

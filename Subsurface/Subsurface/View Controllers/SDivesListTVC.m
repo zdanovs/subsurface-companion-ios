@@ -159,7 +159,7 @@
         [SWEB uploadDive:dive fully:YES];
     }
     
-    [self.tableView setEditing:NO animated:YES];
+    [self setEditing:NO animated:YES];
     [self.tableView reloadData];
 }
 
@@ -175,7 +175,7 @@
     }
     
     [self.tableView deleteRowsAtIndexPaths:[self.tableView indexPathsForSelectedRows] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView setEditing:NO animated:YES];
+    [self setEditing:NO animated:YES];
 }
 
 - (IBAction)allSelectDeselectButtonAction:(id)sender {

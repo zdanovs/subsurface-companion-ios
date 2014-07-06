@@ -21,6 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userID = [userDefaults objectForKey:kUserIdKey];
+    self.existingIdTextField.text = userID;
+    self.logInButton.enabled = userID.length > 0;
+    self.existingIdTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:userID.length  > 0 ? 11.0f : 16.0f];
+    self.existingIdTextField.enablesReturnKeyAutomatically = YES;
+    
+    BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
+    if (shouldSync && userID.length > 0) {
+        [SWEB syncDives:userID];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(accountJustCreated:)
                                                  name:kCreatedAccountNotification
@@ -31,14 +43,6 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *userID = [userDefaults objectForKey:kUserIdKey];
-    self.existingIdTextField.text = userID;
-    
-    self.logInButton.enabled = userID.length > 0;
-    self.existingIdTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:userID.length  > 0 ? 11.0f : 16.0f];
-    self.existingIdTextField.enablesReturnKeyAutomatically = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

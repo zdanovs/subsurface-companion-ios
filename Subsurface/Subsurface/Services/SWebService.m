@@ -125,6 +125,21 @@ static BOOL _autoUpload;
     [alertView show];
 }
 
+- (void)syncDives:(NSString *)userID {
+    NSArray *dives = [SDIVE getDives];
+    for (SDive *dive in dives) {
+        if (![dive.uploaded boolValue]) {
+            [self uploadDive:dive fully:YES];
+        } else {
+#warning (improve sync) do not delete all dives before getting from server; better to make merge
+            [SDIVE removeDive:dive];
+            [SDIVE saveState];
+        }
+    }
+    
+    [self getDivesList:userID];
+}
+
 - (void)getDivesList:(NSString *)userID {
     NSString *urlString = [NSString stringWithFormat:@"%@/dive/get/?login=%@", kServerAddress, userID];
     NSURL *url = [NSURL URLWithString:urlString];

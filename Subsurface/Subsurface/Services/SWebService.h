@@ -24,6 +24,7 @@
 - (void)retrieveAccount:(NSString *)email;
 - (void)deleteAccount:(NSString *)userID withEmail:(NSString *)userEmail;
 
+- (void)syncDives:(NSString *)userID;
 - (void)getDivesList:(NSString *)userID;
 - (void)deleteDive:(SDive *)dive fully:(BOOL)fully;
 - (void)uploadDive:(SDive *)dive fully:(BOOL)fully;

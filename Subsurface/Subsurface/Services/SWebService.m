@@ -9,8 +9,8 @@
 #import "SWebService.h"
 #import "SCoreDiveService.h"
 
-#define kServerAddress  [SWebService apiServerAddress]
-#define kAutoUpload     [SWebService shouldAutoUpload]
+#define kServerAddress  [self apiServerAddress]
+#define kAutoUpload     [self shouldAutoUpload]
 
 @interface SWebService ()
 @property NSString *diveNewName;
@@ -33,26 +33,14 @@ static BOOL _autoUpload;
     return _staticWebService;
 }
 
-+ (NSString *)apiServerAddress {
-    static dispatch_once_t sharedApiAddressTag = 0;
-    
-    dispatch_once(&sharedApiAddressTag, ^{
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        _staticApiAddress = [userDefaults objectForKey:kPreferencesApiKey];
-    });
-    
-    return _staticApiAddress;
+- (NSString *)apiServerAddress {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey:kPreferencesApiKey];
 }
 
-+ (BOOL)shouldAutoUpload {
-    static dispatch_once_t sharedUploadTag = 0;
-    
-    dispatch_once(&sharedUploadTag, ^{
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        _autoUpload = [[userDefaults objectForKey:kPreferencesUploadKey] boolValue];
-    });
-    
-    return _autoUpload;
+- (BOOL)shouldAutoUpload {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [[userDefaults objectForKey:kPreferencesUploadKey] boolValue];
 }
 
 - (void)retrieveAccount:(NSString *)email {
@@ -225,23 +213,36 @@ static BOOL _autoUpload;
 }
 
 - (void)saveDive:(NSMutableDictionary *)diveInfo {
-    NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
+    [diveInfo setObject:[NSNumber numberWithBool:NO] forKey:@"uploaded"];
+    [SDIVE storeDives:@[diveInfo]];
+    [SDIVE saveState];
     
-    NSString *bodyString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_latitude=%f&dive_longitude=%f&dive_time=%@&dive_name=%@", userID, diveInfo[@"date"], [diveInfo[@"latitude"] floatValue], [diveInfo[@"longitude"] floatValue], diveInfo[@"time"], diveInfo[@"name"]];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/dive/add/", kServerAddress]];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
-    request.HTTPBody = [bodyString dataUsingEncoding:NSASCIIStringEncoding];
-    
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-    
-                               [diveInfo setObject:[NSNumber numberWithBool:(connectionError == nil)] forKey:@"uploaded"];
-                               [SDIVE storeDives:@[diveInfo]];
-    
-                           }];
+    if (kAutoUpload) {
+        NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
+        
+        NSString *bodyString = [NSString stringWithFormat:@"login=%@&dive_date=%@&dive_latitude=%f&dive_longitude=%f&dive_time=%@&dive_name=%@", userID, diveInfo[@"date"], [diveInfo[@"latitude"] floatValue], [diveInfo[@"longitude"] floatValue], diveInfo[@"time"], diveInfo[@"name"]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/dive/add/", kServerAddress]];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        request.HTTPMethod = @"POST";
+        request.HTTPBody = [bodyString dataUsingEncoding:NSASCIIStringEncoding];
+        
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                   
+                                   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                                   [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                                   [dateFormatter setLocale:[NSLocale currentLocale]];
+                                   NSDate *convertedDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", diveInfo[@"date"], diveInfo[@"time"]]];
+        
+                                   SDive *dive = [SDIVE getDive:convertedDate];
+                                   dive.uploaded = [NSNumber numberWithBool:(connectionError == nil)];
+                                   [SDIVE saveState];
+                                   
+                                   [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:@[dive]];
+                               }];
+    }
 }
 
 - (void)addDive:(NSString *)diveName {

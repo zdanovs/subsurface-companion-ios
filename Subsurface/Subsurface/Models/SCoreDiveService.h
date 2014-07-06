@@ -25,6 +25,7 @@
 - (void)storeDives:(NSArray *)divesArray;
 
 #pragma mark - Getting dives
+- (SDive *)getDive:(NSDate *)date;
 - (NSArray *)getDives;
 
 #pragma mark - Removing dives

@@ -80,17 +80,20 @@ static SCoreDiveService *_staticDiveService = nil;
     return divesArray;
 }
 
-- (BOOL)diveExists:(NSDate *)date {
+- (SDive *)getDive:(NSDate *)date {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date == %@)", date];
     
-    NSArray *divesArray = [self.internalContext fetchDataWithEntityName:kDbTableDive
-                                                              predicate:predicate
-                                                                   sort:nil
-                                                                 fields:nil
-                                                                   type:NSManagedObjectResultType
-                                                                  limit:-1
-                                                               distinct:NO];
-    return divesArray.count;
+    return [[self.internalContext fetchDataWithEntityName:kDbTableDive
+                                                predicate:predicate
+                                                     sort:nil
+                                                   fields:nil
+                                                     type:NSManagedObjectResultType
+                                                    limit:-1
+                                                 distinct:NO] lastObject];
+}
+
+- (BOOL)diveExists:(NSDate *)date {
+    return [self getDive:date] != nil;
 }
 
 #pragma mark - Removing dives

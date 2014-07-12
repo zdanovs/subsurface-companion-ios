@@ -67,11 +67,23 @@ static SCoreDiveService *_staticDiveService = nil;
 }
 
 #pragma mark - Getting dives
-- (NSArray *)getDives {
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-    
+- (NSArray *)getAllDives {
     NSArray *divesArray = [self.internalContext fetchDataWithEntityName:kDbTableDive
                                                               predicate:nil
+                                                                   sort:nil
+                                                                 fields:nil
+                                                                   type:NSManagedObjectResultType
+                                                                  limit:-1
+                                                               distinct:NO];
+    return divesArray;
+}
+
+- (NSArray *)getDives {
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deleted == NO"];
+    
+    NSArray *divesArray = [self.internalContext fetchDataWithEntityName:kDbTableDive
+                                                              predicate:predicate
                                                                    sort:@[sortDescriptor]
                                                                  fields:nil
                                                                    type:NSManagedObjectResultType

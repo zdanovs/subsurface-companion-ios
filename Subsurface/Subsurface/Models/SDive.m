@@ -16,6 +16,7 @@
 @dynamic longitude;
 @dynamic name;
 @dynamic uploaded;
+@dynamic deleted;
 
 - (NSString *)getDateString {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

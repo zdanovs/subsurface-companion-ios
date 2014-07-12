@@ -114,15 +114,18 @@ static BOOL _autoUpload;
 }
 
 - (void)syncDives:(NSString *)userID {
-    NSArray *dives = [SDIVE getDives];
+    NSArray *dives = [SDIVE getAllDives];
     for (SDive *dive in dives) {
+        //Upload dive if it was added while offline
         if (![dive.uploaded boolValue]) {
-            [self uploadDive:dive fully:YES];
-        } else {
-#warning (improve sync) do not delete all dives before getting from server; better to make merge
-            [SDIVE removeDive:dive];
-            [SDIVE saveState];
+            [self uploadDive:dive fully:NO];
         }
+        //Delete dive from server if it was removed while offline
+        if ([dive.deleted boolValue]) {
+            [self deleteDive:dive fully:YES];
+        }
+        
+        [SDIVE removeDive:dive];
     }
     
     [self getDivesList:userID];
@@ -175,8 +178,11 @@ static BOOL _autoUpload;
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                            
-                               if (fully) {
+                               if (fully && connectionError == nil) {
                                    [SDIVE removeDive:dive];
+                                   [SDIVE saveState];
+                               } else if (fully) {
+                                   dive.deleted = [NSNumber numberWithBool:YES];
                                    [SDIVE saveState];
                                }
                                

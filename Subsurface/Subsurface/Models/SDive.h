@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSNumber *uploaded;
+@property (nonatomic, retain) NSNumber *deleted;
 
 - (NSString *)getDateString;
 - (NSString *)getTimeString;

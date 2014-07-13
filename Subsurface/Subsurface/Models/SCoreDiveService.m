@@ -61,6 +61,7 @@ static SCoreDiveService *_staticDiveService = nil;
         
         dive.date = convertedDate;
         dive.uploaded = diveData[@"uploaded"];
+        dive.userId = [[NSUserDefaults standardUserDefaults] valueForKey:kUserIdKey];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kDivesListLoadNotification object:@[dive]];
     }
@@ -68,8 +69,10 @@ static SCoreDiveService *_staticDiveService = nil;
 
 #pragma mark - Getting dives
 - (NSArray *)getAllDives {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", [[NSUserDefaults standardUserDefaults] valueForKey:kUserIdKey]];
+    
     NSArray *divesArray = [self.internalContext fetchDataWithEntityName:kDbTableDive
-                                                              predicate:nil
+                                                              predicate:predicate
                                                                    sort:nil
                                                                  fields:nil
                                                                    type:NSManagedObjectResultType
@@ -80,7 +83,7 @@ static SCoreDiveService *_staticDiveService = nil;
 
 - (NSArray *)getDives {
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deleted == NO"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@ && deleted == NO", [[NSUserDefaults standardUserDefaults] valueForKey:kUserIdKey]];
     
     NSArray *divesArray = [self.internalContext fetchDataWithEntityName:kDbTableDive
                                                               predicate:predicate
@@ -93,7 +96,8 @@ static SCoreDiveService *_staticDiveService = nil;
 }
 
 - (SDive *)getDive:(NSDate *)date {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date == %@)", date];
+    NSString *userID = [[NSUserDefaults standardUserDefaults] valueForKey:kUserIdKey];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@ && date == %@", userID, date];
     
     return [[self.internalContext fetchDataWithEntityName:kDbTableDive
                                                 predicate:predicate

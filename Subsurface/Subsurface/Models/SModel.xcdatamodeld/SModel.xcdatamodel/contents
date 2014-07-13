@@ -7,8 +7,9 @@
         <attribute name="longitude" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="uploaded" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="userId" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SDive" positionX="0" positionY="0" width="128" height="148"/>
+        <element name="SDive" positionX="0" positionY="0" width="128" height="150"/>
     </elements>
 </model>

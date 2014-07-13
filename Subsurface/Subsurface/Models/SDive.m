@@ -17,6 +17,7 @@
 @dynamic name;
 @dynamic uploaded;
 @dynamic deleted;
+@dynamic userId;
 
 - (NSString *)getDateString {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

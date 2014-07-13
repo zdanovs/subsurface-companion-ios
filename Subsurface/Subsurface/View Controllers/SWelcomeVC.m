@@ -28,11 +28,6 @@
     self.existingIdTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:userID.length  > 0 ? 11.0f : 16.0f];
     self.existingIdTextField.enablesReturnKeyAutomatically = YES;
     
-    BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
-    if (shouldSync && userID.length > 0 && [SWEB internetIsAvailable:NSLocalizedString(@"Unable to perform auto-sync", "")]) {
-        [SWEB syncDives:userID];
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(accountJustCreated:)
                                                  name:kCreatedAccountNotification
@@ -83,12 +78,19 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"LoadDivesList"]) {
+        NSString *userID = self.existingIdTextField.text;
+        
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:self.existingIdTextField.text forKey:kUserIdKey];
+        [userDefaults setObject:userID forKey:kUserIdKey];
         [userDefaults synchronize];
         
+        BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
+        if (shouldSync && userID.length > 0 && [SWEB internetIsAvailable:NSLocalizedString(@"Unable to perform auto-sync", "")]) {
+            [SWEB syncDives:userID];
+        }
+        
         SDivesListTVC *vc = [segue destinationViewController];
-        vc.userID = self.existingIdTextField.text;
+        vc.userID = userID;
     }
 }
 

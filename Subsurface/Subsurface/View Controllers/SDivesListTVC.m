@@ -67,6 +67,33 @@
     self.tableView.contentOffset = CGPointMake(0, kHeaderHeight);
     
     [self.tableView reloadData];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
+    if (shouldSync) {
+        [self.refreshControl beginRefreshing];
+        self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
+    NSString *userID = [userDefaults objectForKey:kUserIdKey];
+    if (shouldSync) {
+        dispatch_queue_t modDateQueue = dispatch_queue_create("SyncDives Queue",NULL);
+        dispatch_async(modDateQueue, ^{
+            if ([SWEB internetIsAvailable:NSLocalizedString(@"Unable to perform auto-sync", "")]) {
+                [SWEB syncDives:userID];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.refreshControl endRefreshing];
+            });
+        });
+    }
 }
 
 #pragma mark - Table view data source

@@ -25,6 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *existingIdTextField;
 @property (weak, nonatomic) IBOutlet UIButton *logInButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -95,11 +96,6 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:userID forKey:kUserIdKey];
         [userDefaults synchronize];
-        
-        BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
-        if (shouldSync && userID.length > 0 && [SWEB internetIsAvailable:NSLocalizedString(@"Unable to perform auto-sync", "")]) {
-            [SWEB syncDives:userID];
-        }
         
         SDivesListTVC *vc = [segue destinationViewController];
         vc.userID = userID;

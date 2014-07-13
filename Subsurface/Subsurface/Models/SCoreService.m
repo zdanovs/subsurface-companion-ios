@@ -22,9 +22,7 @@
 
 #define BLOCK_SAFE_PERFORM(block, ...) block ? block(__VA_ARGS__) : nil
 
-@interface SCoreService () {
-    
-}
+@interface SCoreService ()
 
 @property (nonatomic, copy) BatchProcessBlock       batchProcessBlock;
 @property (nonatomic, copy) BatchProcessEndedBlock  batchProcessEndedBlock;
@@ -100,7 +98,6 @@
 }
 
 - (void)saveBatchArray:(NSArray *)remainingArray {
-    
     NSDictionary *modifiedArrayDictionary = [self separateArray:remainingArray];
     
     NSArray *batchArray = [modifiedArrayDictionary objectForKey:BATCH_ARRAY];

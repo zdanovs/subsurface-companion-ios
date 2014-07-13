@@ -145,7 +145,8 @@
 }
 
 #pragma mark - Status bar appear
-- (UIStatusBarStyle)preferredStatusBarStyle{
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 

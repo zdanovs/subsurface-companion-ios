@@ -21,17 +21,12 @@
 #import <Foundation/Foundation.h>
 #import "SCoreServiceProtocol.h"
 
-@interface SCoreService : NSObject <SCoreServiceProtocol> {
-    
-}
+@interface SCoreService : NSObject <SCoreServiceProtocol>
 
 @property NSString *serviceHash;
 @property NSString *serviceType;
-
 @property NSInteger batchSavingSize;
-
 @property NSMutableArray *performedOperationArray;
-
 @property (nonatomic, copy) ServiceCompletionBlock serviceCompletionBlock;
 
 - (void)performBatchSaving:(NSArray *)entityArray;

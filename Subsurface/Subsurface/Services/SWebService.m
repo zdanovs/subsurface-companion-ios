@@ -25,7 +25,9 @@
 #define kAutoUpload     [self shouldAutoUpload]
 
 @interface SWebService ()
+
 @property NSString *diveNewName;
+
 @end
 
 @implementation SWebService
@@ -33,6 +35,7 @@
 static SWebService *_staticWebService = nil;
 
 #pragma mark - Shared instance
+
 + (SWebService *)sharedWebService {
     static dispatch_once_t sharedServiceTag = 0;
     
@@ -287,7 +290,7 @@ static SWebService *_staticWebService = nil;
     [locationManager startUpdatingLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *newLocation = [locations lastObject];
     [locationManager stopUpdatingLocation];
     

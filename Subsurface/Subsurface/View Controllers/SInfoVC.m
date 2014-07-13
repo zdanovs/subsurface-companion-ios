@@ -47,7 +47,6 @@
     self.deleteAccountButton.hidden = userID.length < 1;
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     

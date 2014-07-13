@@ -31,6 +31,7 @@
 static SCoreDiveService *_staticDiveService = nil;
 
 #pragma mark - Initialization
+
 - (id)initWithContext:(SCoreDataContext *)context {
     self = [self init];
     if (self) {
@@ -40,6 +41,7 @@ static SCoreDiveService *_staticDiveService = nil;
 }
 
 #pragma mark - Shared instance
+
 + (SCoreDiveService *)sharedDiveService {
     static dispatch_once_t sharedContactTag = 0;
     
@@ -51,6 +53,7 @@ static SCoreDiveService *_staticDiveService = nil;
 }
 
 #pragma mark - Inserting dives
+
 - (void)storeDive:(NSDictionary *)diveData {
     [self saveDiveToDBWithData:diveData];
 }
@@ -80,6 +83,7 @@ static SCoreDiveService *_staticDiveService = nil;
 }
 
 #pragma mark - Getting dives
+
 - (NSArray *)getAllDives {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", [[NSUserDefaults standardUserDefaults] valueForKey:kUserIdKey]];
     
@@ -125,16 +129,19 @@ static SCoreDiveService *_staticDiveService = nil;
 }
 
 #pragma mark - Removing dives
+
 - (void)removeDive:(SDive *)dive {
     [self.internalContext deleteObject:dive];
 }
 
 #pragma mark - Save service state
+
 - (void)saveState {
     [self.internalContext saveChanges];
 }
 
 #pragma mark - Superclass method overriding
+
 - (void)storeEntitiesFromArray:(NSArray *)entityArray {
     for (NSDictionary *diveEntry in entityArray) {
         [SDIVE saveDiveToDBWithData:diveEntry];

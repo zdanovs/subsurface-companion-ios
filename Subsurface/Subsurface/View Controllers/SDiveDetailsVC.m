@@ -28,25 +28,25 @@
 
 @interface SDiveDetailsVC ()
 
-@property (weak, nonatomic) IBOutlet UIView *diveInfoContainer;
+@property (weak, nonatomic) IBOutlet UIView  *diveInfoContainer;
 @property (weak, nonatomic) IBOutlet UILabel *diveNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveLatitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diveLongitudeLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *editableInfoContainer;
+@property (weak, nonatomic) IBOutlet UIView      *editableInfoContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *editableNameUnderline;
 @property (weak, nonatomic) IBOutlet UITextField *editableNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *editableDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *editableTimeLabel;
-@property (weak, nonatomic) IBOutlet UIView *coordinatesContainer;
+@property (weak, nonatomic) IBOutlet UIView      *coordinatesContainer;
 @property (weak, nonatomic) IBOutlet UITextField *editableLatitudeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *editableLongitudeLabel;
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet MKMapView   *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *circleBackgroundImageView;
-@property (weak, nonatomic) IBOutlet UIView *tapAnimationView;
+@property (weak, nonatomic) IBOutlet UIView      *tapAnimationView;
 
 @property CLLocationCoordinate2D coordinate;
 @property NSSet *initialState;

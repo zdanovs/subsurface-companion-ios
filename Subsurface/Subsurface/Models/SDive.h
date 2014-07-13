@@ -24,7 +24,7 @@
 
 @interface SDive : NSManagedObject
 
-@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) NSDate   *date;
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSString *name;

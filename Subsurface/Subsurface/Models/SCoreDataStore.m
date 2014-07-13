@@ -33,6 +33,7 @@
 static SCoreDataStore *_staticStore = nil;
 
 #pragma mark - Database setup
+
 - (id)initWithModel:(NSURL *)modelURL andStoreURL:(NSURL *)storeURL {
     if (self = [self init]) {
         _objectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
@@ -58,6 +59,7 @@ static SCoreDataStore *_staticStore = nil;
 }
 
 #pragma mark - Shared instance
+
 + (SCoreDataStore *)sharedStore {
     static dispatch_once_t sharedStoreTag = 0;
     

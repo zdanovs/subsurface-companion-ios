@@ -86,6 +86,10 @@
                                              selector:@selector(startLocationService)
                                                  name:kLocationServiceStartNotification
                                                object:nil];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSNumber numberWithBool:NO] forKey:kLocationServiceEnabledKey];
+    [userDefaults synchronize];
 }
 
 - (void)startLocationService {

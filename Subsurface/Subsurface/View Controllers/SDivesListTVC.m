@@ -215,14 +215,18 @@
     BOOL serviceIsEnabled = [[[NSUserDefaults standardUserDefaults] objectForKey:kLocationServiceEnabledKey] boolValue];
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Add new dive", "")
-                                                        message:NSLocalizedString(@"How would you like to add new dive?", "")
+                                                        message:nil
                                                        delegate:self
                                               cancelButtonTitle:NSLocalizedString(@"Cancel", "")
                                               otherButtonTitles:nil];
     
-    [alertView addButtonWithTitle:NSLocalizedString(@"Manual", "")];
-    if (!serviceIsEnabled) {
-        [alertView addButtonWithTitle:NSLocalizedString(@"Auto", "")];
+    if (serviceIsEnabled) {
+        [alertView addButtonWithTitle:NSLocalizedString(@"Add Manually", "")];
+        [alertView setMessage:NSLocalizedString(@"Location service is already enabled, you can add only manually", "")];
+    } else {
+        [alertView setMessage:NSLocalizedString(@"How would you like to add new dive?", "")];
+        [alertView addButtonWithTitle:NSLocalizedString(@"Manually", "")];
+        [alertView addButtonWithTitle:NSLocalizedString(@"Automatically", "")];
     }
     
     alertView.tag = kChooseDiveOptionAlertTag;

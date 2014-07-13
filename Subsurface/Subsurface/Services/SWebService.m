@@ -43,6 +43,12 @@ static BOOL _autoUpload;
     return [[userDefaults objectForKey:kPreferencesUploadKey] boolValue];
 }
 
+- (BOOL)internetIsAvailable {
+    NSURL *scriptUrl = [NSURL URLWithString:kServerAddress];
+    NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
+    return data != nil;
+}
+
 - (void)retrieveAccount:(NSString *)email {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/lost/%@", kServerAddress, email];
     NSURL *url = [NSURL URLWithString:urlString];

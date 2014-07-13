@@ -92,6 +92,7 @@
     [self startPulseAnimation];
     [self.notificationWindow makeKeyAndVisible];
     [self.locationManager startUpdatingLocation];
+    self.notificationWindow.alpha = 1.0f;
 }
 
 - (void)stopLocationService {

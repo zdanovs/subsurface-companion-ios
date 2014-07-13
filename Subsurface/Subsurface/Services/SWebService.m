@@ -19,8 +19,6 @@
 @implementation SWebService
 
 static SWebService *_staticWebService = nil;
-static NSString *_staticApiAddress = nil;
-static BOOL _autoUpload;
 
 #pragma mark - Shared instance
 + (SWebService *)sharedWebService {

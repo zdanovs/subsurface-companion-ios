@@ -155,14 +155,16 @@
 #pragma mark - UIButtons actions
 
 - (IBAction)uploadDivesButtonAction:(id)sender {
-    NSArray *selectedDives = [self getSelectedDives];
-    
-    for (SDive *dive in selectedDives) {
-        [SWEB uploadDive:dive fully:YES];
+    if ([SWEB internetIsAvailable:NSLocalizedString(@"Unable to upload", "")]) {
+        NSArray *selectedDives = [self getSelectedDives];
+        
+        for (SDive *dive in selectedDives) {
+            [SWEB uploadDive:dive fully:YES];
+        }
+        
+        [self setEditing:NO animated:YES];
+        [self.tableView reloadData];
     }
-    
-    [self setEditing:NO animated:YES];
-    [self.tableView reloadData];
 }
 
 - (IBAction)deleteDivesButtonAction:(id)sender {

@@ -30,3 +30,5 @@
 #define kPreferencesUploadKey       @"preferences_autoUpload"
 #define kPreferencesDistanceKey     @"preferences_distance"
 #define kPreferencesDefaultNameKey  @"preferences_defaultName"
+
+#define kLocationServiceEnabledKey  @"LocationServiceIsEnabled"

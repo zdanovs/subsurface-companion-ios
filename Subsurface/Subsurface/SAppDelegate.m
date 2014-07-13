@@ -89,6 +89,10 @@
 }
 
 - (void)startLocationService {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSNumber numberWithBool:YES] forKey:kLocationServiceEnabledKey];
+    [userDefaults synchronize];
+    
     [self startPulseAnimation];
     [self.notificationWindow makeKeyAndVisible];
     [self.locationManager startUpdatingLocation];
@@ -96,11 +100,14 @@
 }
 
 - (void)stopLocationService {
-    [self.locationManager stopUpdatingLocation];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSNumber numberWithBool:NO] forKey:kLocationServiceEnabledKey];
+    [userDefaults synchronize];
     
     [self.notificationView.layer removeAnimationForKey:kAnimationOpacityKey];
-    self.notificationWindow.alpha = 0.0f;
     [self.primaryWindow makeKeyAndVisible];
+    [self.locationManager stopUpdatingLocation];
+    self.notificationWindow.alpha = 0.0f;
 }
 
 - (void)startPulseAnimation {

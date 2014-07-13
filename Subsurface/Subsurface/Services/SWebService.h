@@ -19,7 +19,7 @@
 
 #pragma mark - Shared instance
 + (SWebService *)sharedWebService;
-- (BOOL)internetIsAvailable;
+- (BOOL)internetIsAvailable:(NSString *)alertTitle;
 
 #pragma mark - Service API
 - (void)retrieveAccount:(NSString *)email;

@@ -29,7 +29,7 @@
     self.existingIdTextField.enablesReturnKeyAutomatically = YES;
     
     BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
-    if (shouldSync && userID.length > 0 && [SWEB internetIsAvailable]) {
+    if (shouldSync && userID.length > 0 && [SWEB internetIsAvailable:NSLocalizedString(@"Unable to perform auto-sync", "")]) {
         [SWEB syncDives:userID];
     }
     

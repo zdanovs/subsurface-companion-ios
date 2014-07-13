@@ -41,9 +41,18 @@ static SWebService *_staticWebService = nil;
     return [[userDefaults objectForKey:kPreferencesUploadKey] boolValue];
 }
 
-- (BOOL)internetIsAvailable {
+- (BOOL)internetIsAvailable:(NSString *)alertTitle {
     NSURL *scriptUrl = [NSURL URLWithString:kServerAddress];
     NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
+    
+    if (!data) {
+        [[[UIAlertView alloc] initWithTitle:alertTitle
+                                    message:NSLocalizedString(@"Can't connect to API server", "")
+                                   delegate:self
+                          cancelButtonTitle:NSLocalizedString(@"OK", "")
+                          otherButtonTitles:nil] show];
+    }
+    
     return data != nil;
 }
 

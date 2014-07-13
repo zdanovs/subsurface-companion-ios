@@ -143,7 +143,13 @@
 #pragma mark - UIRefreshControl handler
 
 - (void)handleRefresh:(id)sender {
-    [SWEB getDivesList:self.userID];
+    if ([SWEB internetIsAvailable:NSLocalizedString(@"Unable to refresh", "")]) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *userID = [userDefaults objectForKey:kUserIdKey];
+        [SWEB syncDives:userID];
+    } else {
+        [self.refreshControl endRefreshing];
+    }
 }
 
 #pragma mark - UIButtons actions

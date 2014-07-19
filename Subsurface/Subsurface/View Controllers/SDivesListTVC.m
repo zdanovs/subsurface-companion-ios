@@ -35,8 +35,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteDivesButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *allSelectDeselectButton;
 
-@property NSArray *divesList;
-@property NSArray *initialDivesList;
+@property NSArray   *divesList;
+@property NSArray   *initialDivesList;
+@property BOOL      vcAlreadyLoaded;
 
 @end
 
@@ -70,7 +71,7 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
-    if (shouldSync) {
+    if (shouldSync && !self.vcAlreadyLoaded) {
         [self.refreshControl beginRefreshing];
         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
     }
@@ -81,11 +82,12 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL shouldSync = [[userDefaults objectForKey:kPreferencesSyncKey] boolValue];
-    NSString *userID = [userDefaults objectForKey:kUserIdKey];
-    if (shouldSync) {
+    
+    if (shouldSync && !self.vcAlreadyLoaded) {
         dispatch_queue_t modDateQueue = dispatch_queue_create("SyncDives Queue",NULL);
         dispatch_async(modDateQueue, ^{
             if ([SWEB internetIsAvailable:NSLocalizedString(@"Unable to perform auto-sync", "")]) {
+                NSString *userID = [userDefaults objectForKey:kUserIdKey];
                 [SWEB syncDives:userID];
             }
             
@@ -94,6 +96,8 @@
             });
         });
     }
+    
+    self.vcAlreadyLoaded = YES;
 }
 
 #pragma mark - Table view data source

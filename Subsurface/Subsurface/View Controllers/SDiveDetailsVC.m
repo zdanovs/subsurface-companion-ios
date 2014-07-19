@@ -44,12 +44,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *editableLatitudeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *editableLongitudeLabel;
 
-@property (weak, nonatomic) IBOutlet MKMapView   *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *circleBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView      *tapAnimationView;
 
-@property CLLocationCoordinate2D coordinate;
-@property NSSet *initialState;
+@property MKMapView                 *mapView;
+@property CLLocationCoordinate2D    coordinate;
+@property NSSet                     *initialState;
 
 @end
 
@@ -81,9 +81,11 @@
     [self.tapAnimationView addGestureRecognizer:tapRecognizer];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
+    self.mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    [self.view insertSubview:self.mapView atIndex:0];
     [self adjustMapAppear];
 }
 

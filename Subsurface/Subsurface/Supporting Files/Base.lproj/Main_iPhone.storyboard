@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uTw-fq-ltz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uTw-fq-ltz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -371,13 +371,6 @@ Enter your </string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Z1A-Cr-HWG" userLabel="mapView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9Wd-R8-ozb" id="U1E-On-YiZ"/>
-                                </connections>
-                            </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dive-details-map-circle" id="OlJ-Nj-AiV" userLabel="circleBackgroundImageView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -536,7 +529,6 @@ Enter your </string>
                         <outlet property="editableNameLabel" destination="p46-qW-gmp" id="a7L-HR-NjO"/>
                         <outlet property="editableNameUnderline" destination="ACU-Uk-B33" id="f1S-QD-KeA"/>
                         <outlet property="editableTimeLabel" destination="V9V-7y-El4" id="z9J-M5-khp"/>
-                        <outlet property="mapView" destination="Z1A-Cr-HWG" id="jjo-fV-0Qp"/>
                         <outlet property="tapAnimationView" destination="Clx-MF-lgA" id="NKe-Aa-iI7"/>
                     </connections>
                 </viewController>

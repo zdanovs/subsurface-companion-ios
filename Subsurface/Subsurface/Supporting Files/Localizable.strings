@@ -1,0 +1,40 @@
+/****************************************************************************/
+/* Localization file */
+
+
+"Location Service is working" = "Location Service is working";
+"Select All" = "Select All";
+"Deselect All" = "Deselect All";
+"Dive name" = "Dive name";
+"Add" = "Add";
+"Cancel" = "Cancel";
+"Enter dive name" = "Enter dive name";
+"Automatically" = "Automatically";
+"Manually" = "Manually";
+"How would you like to add new dive?" = "How would you like to add new dive?";
+"Location service is already enabled, you can add only manually" = "Location service is already enabled, you can add only manually";
+"Add Manually" = "Add Manually";
+"Add new dive" = "Add new dive";
+"Unable to upload" = "Unable to upload";
+"Save" = "Save";
+"Discard" = "Discard";
+"Unable to refresh" = "Unable to refresh";
+"You have edited dive data" = "You have edited dive data";
+"Save changes?" = "Save changes?";
+"Dives List" = "Dives List";
+"Add Dive" = "Add Dive";
+"Got it!" = "Got it!";
+"Close Map" = "Close Map";
+"Send" = "Send";
+"Where to send your ID?" = "Where to send your ID?";
+"Your new ID for" = "Your new ID for";
+"You are one of us!" = "You are one of us!";
+"I will" = "I will";
+"Check email and comfirm account deletion" = "Check email and comfirm account deletion";
+"Unable to perform auto-sync" = "Unable to perform auto-sync";
+"Your ID was send to" = "Your ID was send to";
+"ID Retrieval" = "ID Retrieval";
+"Delete" = "Delete";
+"Enter email associated with your ID" = "Enter email associated with your ID";
+"OK" = "OK";
+"Can't connect to API server" = "Can't connect to API server";

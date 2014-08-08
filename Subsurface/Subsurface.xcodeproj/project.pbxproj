@@ -38,6 +38,7 @@
 		7CD8E0A6193B26E0006F0778 /* SCoreDiveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E0A5193B26E0006F0778 /* SCoreDiveService.m */; };
 		7CD8E0A9193B3515006F0778 /* SCoreDataContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E0A8193B3515006F0778 /* SCoreDataContext.m */; };
 		7CD8E0AC193B3D5D006F0778 /* SCoreDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8E0AB193B3D5D006F0778 /* SCoreDataStore.m */; };
+		ECDF26645B2C63678FF375CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECDF230DEBE53845DC97FE4B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		7CD8E0AA193B3D5D006F0778 /* SCoreDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCoreDataStore.h; sourceTree = "<group>"; };
 		7CD8E0AB193B3D5D006F0778 /* SCoreDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCoreDataStore.m; sourceTree = "<group>"; };
 		7CE7A68D1932382600DF5829 /* SDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDefines.h; sourceTree = "<group>"; };
+		ECDF230DEBE53845DC97FE4B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Supporting Files/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				7CD22859192D418B004D3A21 /* Services */,
 				7CD8E096193A5416006F0778 /* Models */,
 				7C089064192A9A36007307FB /* Supporting Files */,
+				ECDF230DEBE53845DC97FE4B /* Localizable.strings */,
 			);
 			path = Subsurface;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				7C5392561957421C009FBE44 /* Settings.bundle in Resources */,
 				7C089079192A9A36007307FB /* Images.xcassets in Resources */,
 				7C089068192A9A36007307FB /* InfoPlist.strings in Resources */,
+				ECDF26645B2C63678FF375CD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

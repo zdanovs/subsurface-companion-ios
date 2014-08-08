@@ -277,7 +277,7 @@
     textField.keyboardType = UIKeyboardTypeEmailAddress;
     textField.textAlignment = NSTextAlignmentCenter;
     textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    textField.placeholder = @"Dive name";
+    textField.placeholder = NSLocalizedString(@"Dive name", @"");
     
     [alertView show];
 }

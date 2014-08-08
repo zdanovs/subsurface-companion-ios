@@ -2,8 +2,65 @@
 /* Class = "IBUITextField"; placeholder = "Enter existing ID"; ObjectID = "4LX-yd-7uj"; */
 "4LX-yd-7uj.placeholder" = "Enter existing ID";
 
+/* Class = "IBUINavigationItem"; title = "Dives List"; ObjectID = "8RJ-KT-J3O"; */
+"8RJ-KT-J3O.title" = "Dives List";
+
+/* Class = "IBUILabel"; text = "Latitude"; ObjectID = "Ie9-O7-aPD"; */
+"Ie9-O7-aPD.text" = "Latitude";
+
+/* Class = "IBUILabel"; text = "none yet"; ObjectID = "JJe-jS-4Zy"; */
+"JJe-jS-4Zy.text" = "none yet";
+
+/* Class = "IBUIButton"; normalTitle = "mailing list"; ObjectID = "K4h-my-Uq0"; */
+"K4h-my-Uq0.normalTitle" = "mailing list";
+
 /* Class = "IBUIButton"; normalTitle = "email"; ObjectID = "QPU-mL-I5F"; */
 "QPU-mL-I5F.normalTitle" = "email";
 
+/* Class = "IBUILabel"; text = "Longitude"; ObjectID = "VMD-wx-X2t"; */
+"VMD-wx-X2t.text" = "Longitude";
+
+/* Class = "IBUILabel"; text = "Application Version"; ObjectID = "VcZ-Dh-rWI"; */
+"VcZ-Dh-rWI.text" = "Application Version";
+
+/* Class = "IBUILabel"; text = "Account ID"; ObjectID = "WI6-mc-a21"; */
+"WI6-mc-a21.text" = "Account ID";
+
+/* Class = "IBUINavigationItem"; title = "Subsurface"; ObjectID = "We6-la-Gjo"; */
+"We6-la-Gjo.title" = "Subsurface";
+
+/* Class = "IBUILabel"; text = "Dive Name"; ObjectID = "apu-vA-02I"; */
+"apu-vA-02I.text" = "Dive Name";
+
+/* Class = "IBUIBarButtonItem"; title = "Select All"; ObjectID = "cqz-ZE-XIw"; */
+"cqz-ZE-XIw.title" = "Select All";
+
+/* Class = "IBUILabel"; text = "Latitude"; ObjectID = "f8R-oa-y6O"; */
+"f8R-oa-y6O.text" = "Latitude";
+
+/* Class = "IBUILabel"; text = "Dive name"; ObjectID = "jJ0-hk-bwf"; */
+"jJ0-hk-bwf.text" = "Dive name";
+
+/* Class = "IBUILabel"; text = "2014-06-07"; ObjectID = "ovT-CN-GeM"; */
+"ovT-CN-GeM.text" = "2014-06-07";
+
 /* Class = "IBUIButton"; normalTitle = "Dive in"; ObjectID = "ufz-0d-p4P"; */
 "ufz-0d-p4P.normalTitle" = "Dive in";
+
+/* Class = "IBUIButton"; normalTitle = "(Delete)"; ObjectID = "xXf-lY-zIo"; */
+"xXf-lY-zIo.normalTitle" = "(Delete)";
+
+/* Class = "IBUISearchBar"; placeholder = "Search for a dive"; ObjectID = "xnj-TY-ipp"; */
+"xnj-TY-ipp.placeholder" = "Search for a dive";
+
+/* Class = "IBUISearchBar"; xnj-TY-ipp.scopeButtonTitles[0] = "Title"; ObjectID = "xnj-TY-ipp"; */
+"xnj-TY-ipp.scopeButtonTitles[0]" = "Title";
+
+/* Class = "IBUISearchBar"; xnj-TY-ipp.scopeButtonTitles[1] = "Title"; ObjectID = "xnj-TY-ipp"; */
+"xnj-TY-ipp.scopeButtonTitles[1]" = "Title";
+
+/* Class = "IBUILabel"; text = "Longitude"; ObjectID = "yHy-6w-f9j"; */
+"yHy-6w-f9j.text" = "Longitude";
+
+/* Class = "IBUIButton"; normalTitle = "website"; ObjectID = "zDT-9P-bDm"; */
+"zDT-9P-bDm.normalTitle" = "website";

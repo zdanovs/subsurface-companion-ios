@@ -87,6 +87,20 @@
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     [self.view insertSubview:self.mapView atIndex:0];
     [self adjustMapAppear];
+    
+    [self disableAutolayoutForProperAnimation];
+}
+
+- (void)disableAutolayoutForProperAnimation {
+    [self.circleBackgroundImageView removeFromSuperview];
+    [self.circleBackgroundImageView setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [self.circleBackgroundImageView setFrame:self.circleBackgroundImageView.frame];
+    [self.view insertSubview:self.circleBackgroundImageView belowSubview:self.editableInfoContainer];
+    
+    [self.coordinatesContainer removeFromSuperview];
+    [self.coordinatesContainer setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [self.coordinatesContainer setFrame:self.coordinatesContainer.frame];
+    [self.view addSubview:self.coordinatesContainer];
 }
 
 - (void)adjustMapAppear {
@@ -110,7 +124,8 @@
     
     // Move map to fit in circle
     CLLocationCoordinate2D moveCoord = self.coordinate;
-    moveCoord.latitude += self.mapView.region.span.latitudeDelta * 0.22;
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    moveCoord.latitude += self.mapView.region.span.latitudeDelta * (screenSize.height > 480 ? 0.22 : 0.32);
     [self.mapView setCenterCoordinate:moveCoord animated:YES];
 }
 

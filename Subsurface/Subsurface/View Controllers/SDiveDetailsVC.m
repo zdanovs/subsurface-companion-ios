@@ -26,7 +26,7 @@
 #define kScaleFactor    7
 #define kCircleRadius   50
 
-@interface SDiveDetailsVC ()
+@interface SDiveDetailsVC () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView  *diveInfoContainer;
 @property (weak, nonatomic) IBOutlet UILabel *diveNameLabel;
@@ -85,6 +85,7 @@
     [super viewWillAppear:animated];
     
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    self.mapView.delegate = self;
     [self.view insertSubview:self.mapView atIndex:0];
     [self adjustMapAppear];
     

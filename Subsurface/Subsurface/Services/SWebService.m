@@ -61,11 +61,15 @@ static SWebService *_staticWebService = nil;
     NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
     
     if (!data) {
-        [[[UIAlertView alloc] initWithTitle:alertTitle
-                                    message:NSLocalizedString(@"Can't connect to API server", "")
-                                   delegate:self
-                          cancelButtonTitle:NSLocalizedString(@"OK", "")
-                          otherButtonTitles:nil] show];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                            message:NSLocalizedString(@"Can't connect to API server", "")
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", "")
+                                                  otherButtonTitles:nil];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alertView show];
+        });
     }
     
     return data != nil;

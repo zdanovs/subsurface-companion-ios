@@ -21,7 +21,7 @@
 #import "SAppDelegate.h"
 
 #define kAnimationOpacityKey    @"animateOpacity"
-#define HOUR 3600
+#define kHour 3600
 
 @interface SAppDelegate () <CLLocationManagerDelegate>
 
@@ -165,7 +165,7 @@
 
 - (void)scheduleNotification {
 	self.batteryNotification = [[UILocalNotification alloc] init];
-	self.batteryNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 10];
+	self.batteryNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 4 * kHour];
 	self.batteryNotification.alertBody = @"Subsurface is running in the background and using battery.";
 	self.batteryNotification.timeZone = [NSTimeZone defaultTimeZone];
 	[[UIApplication sharedApplication] scheduleLocalNotification:self.batteryNotification];

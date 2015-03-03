@@ -21,6 +21,7 @@
 #import "SAppDelegate.h"
 
 #define kAnimationOpacityKey    @"animateOpacity"
+#define kHour 3600
 
 @interface SAppDelegate () <CLLocationManagerDelegate>
 
@@ -29,6 +30,8 @@
 @property UIWindow  *primaryWindow;
 @property UIWindow  *notificationWindow;
 @property UIView    *notificationView;
+
+@property UILocalNotification *batteryNotification;
 
 @end
 
@@ -44,6 +47,10 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [self registerDefaultsFromSettingsBundle];
     [self startPulseAnimation];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+	[application cancelLocalNotification:self.batteryNotification];
 }
 
 #pragma mark - Additional methods
@@ -96,7 +103,11 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:[NSNumber numberWithBool:YES] forKey:kLocationServiceEnabledKey];
     [userDefaults synchronize];
-    
+
+	[self getUserPremissionForNotifications];
+
+	[self scheduleNotification];
+
     [self startPulseAnimation];
     [self.notificationWindow makeKeyAndVisible];
     [self.locationManager startUpdatingLocation];
@@ -111,6 +122,7 @@
     [self.notificationView.layer removeAnimationForKey:kAnimationOpacityKey];
     [self.primaryWindow makeKeyAndVisible];
     [self.locationManager stopUpdatingLocation];
+	[[UIApplication sharedApplication] cancelLocalNotification:self.batteryNotification];
     self.notificationWindow.alpha = 0.0f;
 }
 
@@ -149,6 +161,26 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults registerDefaults:defaultsToRegister];
     [userDefaults synchronize];
+}
+
+- (void)scheduleNotification {
+	self.batteryNotification = [[UILocalNotification alloc] init];
+	self.batteryNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 4 * kHour];
+	self.batteryNotification.alertBody = @"Subsurface is running in the background and using battery.";
+	self.batteryNotification.timeZone = [NSTimeZone defaultTimeZone];
+	[[UIApplication sharedApplication] scheduleLocalNotification:self.batteryNotification];
+}
+
+#pragma mark - Permission methods
+
+- (void)getUserPremissionForNotifications {
+	UIApplication *app = [UIApplication sharedApplication];
+
+	if ([app respondsToSelector:@selector(registerUserNotificationSettings:)])
+	{
+		UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert categories:nil];
+		[app registerUserNotificationSettings:settings];
+	}
 }
 
 @end

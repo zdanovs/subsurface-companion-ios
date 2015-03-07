@@ -174,6 +174,10 @@ static SWebService *_staticWebService = nil;
          if (data.length > 0 && connectionError == nil) {
              
              NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+			 if ([json[@"error"] isEqualToString:@"Login invalid"]) {
+				 [[NSNotificationCenter defaultCenter] postNotificationName:kWrongUserID object:nil];
+				 return;
+			 }
              NSArray *divesListArray = json[@"dives"];
              
              NSMutableArray *updatedDives = [NSMutableArray arrayWithCapacity:divesListArray.count];

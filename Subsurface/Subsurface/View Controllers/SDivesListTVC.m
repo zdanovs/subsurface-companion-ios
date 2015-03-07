@@ -59,6 +59,10 @@
                                              selector:@selector(divesListReceived:)
                                                  name:kDivesListLoadNotification
                                                object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(wrongUserID:)
+												 name:kWrongUserID
+											   object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -181,6 +185,16 @@
     _initialDivesList = _divesList.copy;
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
+}
+
+- (void)wrongUserID:(NSNotification *)notification {
+	UIAlertView *wrongIDAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", "")
+														   message:NSLocalizedString(@"Wrong user ID please try again", "")
+														  delegate:self
+												 cancelButtonTitle:NSLocalizedString(@"Ok", "")
+												 otherButtonTitles: nil];
+	[wrongIDAlert show];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UIRefreshControl handler

@@ -20,6 +20,7 @@
 
 #define kUserIdKey  @"userID"
 
+#define kWrongUserID						@"WrongUserID"
 #define kDivesListLoadNotification          @"DivesListIsLoaded"
 #define kCreatedAccountNotification         @"NewlyCreatedAccountID"
 #define kDeletedAccountNotification         @"AccountDeleted"
